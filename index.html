@@ -313,7 +313,10 @@
   <!-- ==========================================
        ABOUT ME SECTION (BENTO GRID)
        ========================================== -->
-  <section id="about">
+  <section id="about" class="signature-section" data-signature="about">
+    <div class="ink-brush-canvas" aria-hidden="true">
+      <div class="ink-stroke-wash"></div>
+    </div>
     <div class="container">
       <div class="section-header reveal">
         <div class="watermark-text" aria-hidden="true">自己紹介</div>
@@ -405,7 +408,11 @@
   <!-- ==========================================
        TECHNICAL ARSENAL SECTION
        ========================================== -->
-  <section id="arsenal">
+  <section id="arsenal" class="signature-section" data-signature="arsenal">
+    <div class="circuit-grid-overlay" aria-hidden="true">
+      <div class="circuit-laser-h"></div>
+      <div class="circuit-laser-v"></div>
+    </div>
     <div class="container">
       <div class="section-header reveal">
         <div class="watermark-text" aria-hidden="true">技術兵器</div>
@@ -533,7 +540,7 @@
   <!-- ==========================================
        INTERACTIVE AI AGENT SANDBOX (PLAYGROUND)
        ========================================== -->
-  <section id="playground">
+  <section id="playground" class="signature-section" data-signature="playground">
     <div class="container">
       <div class="section-header reveal">
         <div class="watermark-text" aria-hidden="true">実証実験</div>
@@ -545,6 +552,8 @@
       </div>
 
       <div class="playground-box reveal">
+        <div class="crt-scanline-glitch" aria-hidden="true"></div>
+        <div class="hologram-grid-ambient" aria-hidden="true"></div>
         <div class="playground-controls">
           <button class="prompt-pill-btn active" data-scenario="attendance">
             ✦ TrackX Attendance Forecaster
@@ -576,7 +585,7 @@
   <!-- ==========================================
        FEATURED PROJECTS SECTION (ALL 8 INCLUDED)
        ========================================== -->
-  <section id="projects">
+  <section id="projects" class="signature-section" data-signature="projects">
     <div class="container">
       <div class="section-header reveal">
         <div class="watermark-text" aria-hidden="true">実績作品</div>
@@ -596,7 +605,7 @@
       </div>
 
       <!-- Projects Grid -->
-      <div class="projects-grid reveal-stagger" id="projects-grid-container">
+      <div class="projects-grid reveal-stagger deck-perspective-grid" id="projects-grid-container">
         <!-- Rendered dynamically by app.js from PROJECTS_DATA -->
       </div>
     </div>
@@ -611,7 +620,7 @@
   <!-- ==========================================
        EXPERIENCE & HACKATHONS TIMELINE
        ========================================== -->
-  <section id="experience">
+  <section id="experience" class="signature-section" data-signature="experience">
     <div class="container">
       <div class="section-header reveal">
         <div class="watermark-text" aria-hidden="true">経歴道程</div>
@@ -623,6 +632,7 @@
       </div>
 
       <div class="experience-timeline reveal-stagger">
+        <div class="chrono-beam-laser" aria-hidden="true"></div>
         <!-- Outlier AI -->
         <div class="bento-card timeline-item">
           <div class="timeline-meta">
@@ -720,7 +730,11 @@
   <!-- ==========================================
        CERTIFICATIONS VAULT (FILTERABLE)
        ========================================== -->
-  <section id="certifications">
+  <section id="certifications" class="signature-section" data-signature="certifications">
+    <div class="quantum-seal-backdrop" aria-hidden="true">
+      <div class="quantum-hex-ring"></div>
+      <div class="quantum-hex-core"></div>
+    </div>
     <div class="container">
       <div class="section-header reveal">
         <div class="watermark-text" aria-hidden="true">資格認証</div>
@@ -868,7 +882,8 @@
   <!-- ==========================================
        MY APPROACH PIPELINE
        ========================================== -->
-  <section id="approach">
+  <section id="approach" class="signature-section" data-signature="approach">
+    <div class="pipeline-conveyor-beam" aria-hidden="true"></div>
     <div class="container">
       <div class="section-header reveal">
         <div class="watermark-text" aria-hidden="true">開発手法</div>
@@ -924,7 +939,8 @@
   <!-- ==========================================
        BEYOND CODE (HOBBIES & INSPIRATIONS)
        ========================================== -->
-  <section id="beyond">
+  <section id="beyond" class="signature-section" data-signature="beyond">
+    <div class="prismatic-wash-overlay" aria-hidden="true"></div>
     <div class="container">
       <div class="section-header reveal">
         <div class="watermark-text" aria-hidden="true">趣味情熱</div>
@@ -1028,7 +1044,7 @@
   <!-- ==========================================
        CURRENTLY BUILDING & CONTACT SECTION
        ========================================== -->
-  <section id="contact">
+  <section id="contact" class="signature-section" data-signature="contact">
     <div class="container">
       <div class="section-header reveal">
         <div class="watermark-text" aria-hidden="true">接続連絡</div>
@@ -1076,6 +1092,11 @@
 
       <!-- Main Contact Card -->
       <div class="contact-card-main reveal">
+        <div class="radar-ping-emitter" aria-hidden="true">
+          <div class="radar-ripple ring-1"></div>
+          <div class="radar-ripple ring-2"></div>
+          <div class="radar-ripple ring-3"></div>
+        </div>
         <h3 style="font-size:clamp(1.8rem, 3.5vw, 2.5rem); font-weight:800; margin-bottom:12px;">
           Let's build something <span class="highlight">extraordinary</span> together.
         </h3>
@@ -1102,28 +1123,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Transition Style Switcher & Chapter HUD -->
-  <aside class="page-hud-container" aria-label="Page Chapter and Animation Mode">
-    <!-- Quick Mode Toggle between Option 1 (Portal Sweep) & Option 3 (Torii Shutter) -->
-    <div class="transition-mode-bar">
-      <span class="mode-label">ANIMATION:</span>
-      <button class="mode-btn active" id="mode-opt1-btn" title="Option 1: Fast Cinematic Energy Portal Sweep & Depth Focus">
-        <span>✦ Energy Sweep (Opt 1)</span>
-      </button>
-      <button class="mode-btn" id="mode-opt3-btn" title="Option 3: Japanese Cyber-Torii Shutter Gates">
-        <span>⛩️ Torii Shutter (Opt 3)</span>
-      </button>
-    </div>
-
-    <!-- Active Chapter HUD Pill -->
-    <div class="chapter-hud-pill" id="chapter-hud-pill">
-      <span class="hud-kanji" id="hud-kanji">自己紹介</span>
-      <span class="hud-divider">|</span>
-      <span class="hud-chapter" id="hud-chapter">CH. 01</span>
-      <span class="hud-title" id="hud-title">Profile & Philosophy</span>
-    </div>
-  </aside>
 
   <!-- Floating Bottom Glass Navigation Dock -->
   <nav class="floating-bottom-dock" aria-label="Main Navigation">
@@ -1210,59 +1209,6 @@
         </div>
         <button class="btn btn-secondary" id="modal-dismiss-btn">Dismiss</button>
       </div>
-    </div>
-  </div>
-
-  <!-- ==========================================
-       OPTION 1: CINEMATIC ENERGY PORTAL SWEEP OVERLAY
-       ========================================== -->
-  <div class="energy-portal-overlay" id="energy-portal" aria-hidden="true">
-    <div class="energy-backdrop"></div>
-    <div class="energy-light-streak"></div>
-    <div class="energy-card">
-      <div class="energy-laser-line"></div>
-      <div class="energy-kanji" id="energy-kanji">技術兵器</div>
-      <div class="energy-meta">
-        <span class="energy-badge" id="energy-badge">CHAPTER 02</span>
-        <span class="energy-dot"></span>
-        <span class="energy-status">TELEPORTING</span>
-      </div>
-      <h2 class="energy-title" id="energy-title">TECHNICAL ARSENAL</h2>
-      <div class="energy-progress-bar"><div class="energy-progress-fill"></div></div>
-    </div>
-  </div>
-
-  <!-- ==========================================
-       CYBER-TORII SHUTTER PAGE TRANSITION OVERLAY
-       ========================================== -->
-  <div class="torii-shutter-overlay" id="torii-shutter" aria-hidden="true">
-    <!-- Left Sliding Shutter Panel -->
-    <div class="shutter-panel shutter-panel-left">
-      <div class="shutter-lattice"></div>
-      <div class="shutter-laser-edge"></div>
-    </div>
-
-    <!-- Right Sliding Shutter Panel -->
-    <div class="shutter-panel shutter-panel-right">
-      <div class="shutter-lattice"></div>
-      <div class="shutter-laser-edge"></div>
-    </div>
-
-    <!-- Center Torii Gate & Chapter Emblem -->
-    <div class="torii-emblem-center" id="shutter-emblem">
-      <div class="torii-gate-icon">
-        <svg viewBox="0 0 100 80" class="torii-svg" fill="none">
-          <path d="M 6 18 C 30 13, 70 13, 94 18" stroke="var(--twilight-rose)" stroke-width="5.5" stroke-linecap="round"/>
-          <path d="M 14 28 L 86 28" stroke="var(--twilight-rose)" stroke-width="3.5" stroke-linecap="round"/>
-          <path d="M 28 28 L 28 78" stroke="var(--twilight-rose)" stroke-width="4.5"/>
-          <path d="M 72 28 L 72 78" stroke="var(--twilight-rose)" stroke-width="4.5"/>
-          <circle cx="50" cy="23" r="3.5" fill="var(--ai-cyan)"/>
-        </svg>
-      </div>
-      <div class="shutter-kanji" id="shutter-kanji">鳥居転換</div>
-      <div class="shutter-chapter-badge" id="shutter-badge">CHAPTER 01</div>
-      <div class="shutter-title" id="shutter-title">PROFILE & PHILOSOPHY</div>
-      <div class="shutter-energy-ring"></div>
     </div>
   </div>
 

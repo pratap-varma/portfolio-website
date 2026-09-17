@@ -597,548 +597,466 @@ button {
 }
 
 /* ==========================================================================
-   CYBER-TORII SHUTTER PAGE TRANSITION (OPTION 3 DEMO)
-   Sliding Japanese cyber-torii shoji shutters with meeting laser edges
+   SIGNATURE PER-SECTION ANIMATIONS
+   Each section features its own distinct thematic visual spectacle
    ========================================================================== */
-.torii-shutter-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 999999;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
-}
-
-.torii-shutter-overlay.is-active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
-}
-
-/* Sliding Shutter Panels */
-.shutter-panel {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50.5vw;
-  height: 100%;
-  background: radial-gradient(circle at center, #130f24 0%, #06040e 100%);
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.95);
-  transition: transform 0.38s cubic-bezier(0.7, 0, 0.15, 1);
-  overflow: hidden;
-  will-change: transform;
-}
-
-.shutter-panel-left {
-  left: 0;
-  transform: translateX(-105%);
-}
-
-.shutter-panel-right {
-  right: 0;
-  transform: translateX(105%);
-}
-
-/* Traditional Shoji Lattice Mesh */
-.shutter-lattice {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(255, 126, 149, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 126, 149, 0.06) 1px, transparent 1px);
-  background-size: 36px 36px;
-  opacity: 0.8;
-}
-
-/* Neon Cyber Laser Edge along the seam */
-.shutter-laser-edge {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, transparent, #00f2fe 30%, #ff7e95 70%, transparent);
-  box-shadow: 0 0 25px #ff7e95, 0 0 45px #00f2fe;
-}
-
-.shutter-panel-left .shutter-laser-edge {
-  right: 0;
-}
-
-.shutter-panel-right .shutter-laser-edge {
-  left: 0;
-}
-
-/* Center Cyber-Torii Chapter Emblem */
-.torii-emblem-center {
+.signature-section {
   position: relative;
-  z-index: 10;
-  text-align: center;
-  opacity: 0;
-  transform: scale(0.7) translateY(10px);
-  transition: opacity 0.28s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 32px 48px;
-  background: rgba(13, 9, 23, 0.92);
-  border: 1px solid rgba(255, 126, 149, 0.45);
-  border-radius: 24px;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(255, 126, 149, 0.35);
-  max-width: 90vw;
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
 }
 
-.torii-gate-icon {
-  width: 76px;
-  height: 60px;
-  margin-bottom: 12px;
-  filter: drop-shadow(0 0 14px #ff7e95);
-  animation: torii-float 2s ease-in-out infinite alternate;
-}
-
-.torii-svg {
+/* --------------------------------------------------------------------------
+   01. ABOUT: Japanese Sumi-e Ink Brush Stroke & Handscroll Unfold
+   -------------------------------------------------------------------------- */
+.ink-brush-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-}
-
-.shutter-kanji {
-  font-family: var(--font-japanese);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--twilight-rose);
-  letter-spacing: 0.35em;
-  text-shadow: 0 0 24px rgba(255, 126, 149, 0.9);
-  margin-bottom: 6px;
-}
-
-.shutter-chapter-badge {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  color: var(--ai-cyan);
-  margin-bottom: 6px;
-  text-transform: uppercase;
-}
-
-.shutter-title {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.08em;
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
-}
-
-.shutter-energy-ring {
-  position: absolute;
-  inset: -12px;
-  border-radius: 32px;
-  border: 1px dashed rgba(0, 242, 254, 0.45);
-  animation: ring-rotate 12s linear infinite;
   pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
 }
 
-@keyframes ring-rotate {
+.ink-stroke-wash {
+  position: absolute;
+  top: 15%;
+  left: -120%;
+  width: 120%;
+  height: 280px;
+  background: radial-gradient(ellipse at center, rgba(255, 126, 149, 0.18) 0%, rgba(13, 9, 23, 0.85) 60%, transparent 80%);
+  filter: blur(28px);
+  transform: skewX(-18deg);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.signature-section[data-signature="about"].is-page-active .ink-stroke-wash {
+  opacity: 1;
+  animation: sumi-ink-sweep 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes sumi-ink-sweep {
+  0% { transform: translateX(0) skewX(-18deg); opacity: 0.8; }
+  60% { opacity: 0.6; }
+  100% { transform: translateX(240%) skewX(-18deg); opacity: 0; }
+}
+
+.signature-section[data-signature="about"].is-page-active .about-bento-grid > * {
+  animation: scroll-unfold 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.signature-section[data-signature="about"].is-page-active .about-bento-grid > *:nth-child(1) { animation-delay: 0.08s; }
+.signature-section[data-signature="about"].is-page-active .about-bento-grid > *:nth-child(2) { animation-delay: 0.18s; }
+.signature-section[data-signature="about"].is-page-active .about-bento-grid > *:nth-child(3) { animation-delay: 0.28s; }
+.signature-section[data-signature="about"].is-page-active .about-bento-grid > *:nth-child(4) { animation-delay: 0.38s; }
+
+@keyframes scroll-unfold {
+  0% { opacity: 0; transform: translateY(40px) scale(0.95); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+/* --------------------------------------------------------------------------
+   02. ARSENAL: Cyber Circuit Matrix Power-Up & Neon Laser Stream
+   -------------------------------------------------------------------------- */
+.circuit-grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.circuit-laser-h, .circuit-laser-v {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #00f2fe, #ff7e95, transparent);
+  opacity: 0;
+  filter: drop-shadow(0 0 12px #00f2fe);
+}
+
+.circuit-laser-h {
+  top: 30%;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+}
+
+.circuit-laser-v {
+  top: -100%;
+  right: 15%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #ff7e95, #00f2fe, transparent);
+}
+
+.signature-section[data-signature="arsenal"].is-page-active .circuit-laser-h {
+  opacity: 1;
+  animation: circuit-stream-h 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.signature-section[data-signature="arsenal"].is-page-active .circuit-laser-v {
+  opacity: 1;
+  animation: circuit-stream-v 1.6s 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes circuit-stream-h {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(250%); opacity: 0; }
+}
+
+@keyframes circuit-stream-v {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(250%); opacity: 0; }
+}
+
+.signature-section[data-signature="arsenal"].is-page-active .arsenal-grid > * {
+  animation: arsenal-powerup 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.signature-section[data-signature="arsenal"].is-page-active .arsenal-grid > *:nth-child(1) { animation-delay: 0.05s; }
+.signature-section[data-signature="arsenal"].is-page-active .arsenal-grid > *:nth-child(2) { animation-delay: 0.15s; }
+.signature-section[data-signature="arsenal"].is-page-active .arsenal-grid > *:nth-child(3) { animation-delay: 0.25s; }
+.signature-section[data-signature="arsenal"].is-page-active .arsenal-grid > *:nth-child(4) { animation-delay: 0.35s; }
+
+@keyframes arsenal-powerup {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+    box-shadow: 0 0 0 rgba(0, 242, 254, 0);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(0, 242, 254, 0.35), 0 0 15px rgba(255, 126, 149, 0.25);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   03. PLAYGROUND: CRT Terminal Scanline Glitch & Hologram Flare
+   -------------------------------------------------------------------------- */
+.crt-scanline-glitch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.8), rgba(255, 255, 255, 0.9), rgba(0, 242, 254, 0.8), transparent);
+  box-shadow: 0 0 18px #00f2fe;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hologram-grid-ambient {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 50% 30%, rgba(0, 242, 254, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.signature-section[data-signature="playground"].is-page-active .crt-scanline-glitch {
+  opacity: 1;
+  animation: crt-sweep 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.signature-section[data-signature="playground"].is-page-active .hologram-grid-ambient {
+  opacity: 1;
+}
+
+@keyframes crt-sweep {
+  0% { transform: translateY(0); opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 0.9; }
+  100% { transform: translateY(480px); opacity: 0; }
+}
+
+.signature-section[data-signature="playground"].is-page-active .playground-box {
+  animation: terminal-boot 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes terminal-boot {
+  0% {
+    transform: scaleY(0.92) scaleX(0.98);
+    filter: brightness(1.4) drop-shadow(0 0 30px rgba(0, 242, 254, 0.4));
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1) drop-shadow(0 0 0 transparent);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   04. PROJECTS: 3D Deck Fan-Out & Blueprint Corner Shimmer
+   -------------------------------------------------------------------------- */
+.signature-section[data-signature="projects"].is-page-active .deck-perspective-grid > * {
+  animation: deck-card-fan 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.signature-section[data-signature="projects"].is-page-active .deck-perspective-grid > *:nth-child(1) { animation-delay: 0.04s; }
+.signature-section[data-signature="projects"].is-page-active .deck-perspective-grid > *:nth-child(2) { animation-delay: 0.12s; }
+.signature-section[data-signature="projects"].is-page-active .deck-perspective-grid > *:nth-child(3) { animation-delay: 0.20s; }
+.signature-section[data-signature="projects"].is-page-active .deck-perspective-grid > *:nth-child(4) { animation-delay: 0.28s; }
+.signature-section[data-signature="projects"].is-page-active .deck-perspective-grid > *:nth-child(5) { animation-delay: 0.36s; }
+.signature-section[data-signature="projects"].is-page-active .deck-perspective-grid > *:nth-child(6) { animation-delay: 0.44s; }
+
+@keyframes deck-card-fan {
+  0% {
+    opacity: 0;
+    transform: perspective(900px) rotateX(12deg) translateY(45px) scale(0.93);
+    border-color: rgba(255, 126, 149, 0.6);
+    box-shadow: 0 0 25px rgba(255, 126, 149, 0.3);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(900px) rotateX(0deg) translateY(0) scale(1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   05. EXPERIENCE: Chrono-Particle Laser Beam
+   -------------------------------------------------------------------------- */
+.chrono-beam-laser {
+  position: absolute;
+  top: 0;
+  left: 36px;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(180deg, #ff7e95, #00f2fe, #ffffff);
+  box-shadow: 0 0 16px #ff7e95, 0 0 30px #00f2fe;
+  pointer-events: none;
+  z-index: 5;
+  border-radius: 3px;
+}
+
+.signature-section[data-signature="experience"].is-page-active .chrono-beam-laser {
+  animation: chrono-beam-travel 1.4s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+@keyframes chrono-beam-travel {
+  0% { height: 0%; top: 0; opacity: 1; }
+  70% { height: 100%; top: 0; opacity: 1; }
+  100% { height: 100%; top: 0; opacity: 0; }
+}
+
+.signature-section[data-signature="experience"].is-page-active .timeline-item {
+  animation: milestone-pulse 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.signature-section[data-signature="experience"].is-page-active .timeline-item:nth-child(2) { animation-delay: 0.15s; }
+.signature-section[data-signature="experience"].is-page-active .timeline-item:nth-child(3) { animation-delay: 0.30s; }
+.signature-section[data-signature="experience"].is-page-active .timeline-item:nth-child(4) { animation-delay: 0.45s; }
+.signature-section[data-signature="experience"].is-page-active .timeline-item:nth-child(5) { animation-delay: 0.60s; }
+
+@keyframes milestone-pulse {
+  0% { opacity: 0; transform: translateX(-30px); }
+  60% { border-color: rgba(0, 242, 254, 0.6); box-shadow: 0 0 20px rgba(0, 242, 254, 0.25); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* --------------------------------------------------------------------------
+   06. CERTIFICATIONS: Quantum Cryptographic Hex Seal Unlock
+   -------------------------------------------------------------------------- */
+.quantum-seal-backdrop {
+  position: absolute;
+  top: 40px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.quantum-hex-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 42%;
+  border: 2px dashed rgba(251, 191, 36, 0.4);
+  filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.3));
+}
+
+.quantum-hex-core {
+  position: absolute;
+  inset: 40px;
+  border-radius: 46%;
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  filter: drop-shadow(0 0 20px rgba(0, 242, 254, 0.25));
+}
+
+.signature-section[data-signature="certifications"].is-page-active .quantum-seal-backdrop {
+  opacity: 0.8;
+  animation: hex-seal-rotate 25s linear infinite;
+}
+
+@keyframes hex-seal-rotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-@keyframes torii-float {
-  0% { transform: translateY(0) scale(0.98); filter: drop-shadow(0 0 10px #ff7e95); }
-  100% { transform: translateY(-4px) scale(1.02); filter: drop-shadow(0 0 22px #00f2fe); }
+.signature-section[data-signature="certifications"].is-page-active .cert-card {
+  animation: cert-unlock-glow 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* When Shutters Are Closed in Center */
-.torii-shutter-overlay.closing .shutter-panel-left {
-  transform: translateX(0);
+.signature-section[data-signature="certifications"].is-page-active .cert-card:nth-child(odd) { animation-delay: 0.08s; }
+.signature-section[data-signature="certifications"].is-page-active .cert-card:nth-child(even) { animation-delay: 0.16s; }
+
+@keyframes cert-unlock-glow {
+  0% { opacity: 0; transform: scale(0.92); }
+  50% { border-color: rgba(251, 191, 36, 0.6); box-shadow: 0 0 16px rgba(251, 191, 36, 0.2); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
-.torii-shutter-overlay.closing .shutter-panel-right {
-  transform: translateX(0);
-}
-
-.torii-shutter-overlay.closing .torii-emblem-center {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-/* Daylight Sakura Theme Overrides */
-[data-theme="light"] .shutter-panel {
-  background: radial-gradient(circle at center, #fdf2f8 0%, #ede9fe 100%);
-  box-shadow: 0 0 50px rgba(15, 23, 42, 0.2);
-}
-
-[data-theme="light"] .shutter-lattice {
-  background-image: 
-    linear-gradient(rgba(219, 39, 119, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(219, 39, 119, 0.08) 1px, transparent 1px);
-}
-
-[data-theme="light"] .torii-emblem-center {
-  background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(219, 39, 119, 0.45);
-  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2), 0 0 35px rgba(219, 39, 119, 0.25);
-}
-
-[data-theme="light"] .shutter-title {
-  color: #0f172a;
-}
-
-/* ==========================================================================
-   PAGE HUD & ANIMATION MODE SELECTOR (ABOVE BOTTOM DOCK)
-   ========================================================================== */
-.page-hud-container {
-  position: fixed;
-  bottom: 82px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 99;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  pointer-events: none;
-  max-width: calc(100vw - 24px);
-}
-
-.transition-mode-bar {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  background: rgba(14, 16, 29, 0.9);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 126, 149, 0.3);
-  border-radius: var(--radius-pill);
-  padding: 4px 6px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 16px rgba(255, 126, 149, 0.15);
-  pointer-events: auto;
-  white-space: nowrap;
-}
-
-.mode-label {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  letter-spacing: 0.12em;
-  padding: 0 8px;
-}
-
-.mode-btn {
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: var(--radius-pill);
-  padding: 4px 12px;
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  white-space: nowrap;
-}
-
-.mode-btn:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.mode-btn.active {
-  color: #ffffff;
-  background: linear-gradient(135deg, rgba(255, 126, 149, 0.32), rgba(0, 242, 254, 0.22));
-  border-color: rgba(255, 126, 149, 0.5);
-  box-shadow: 0 0 14px rgba(255, 126, 149, 0.35);
-}
-
-/* Active Chapter HUD Pill */
-.chapter-hud-pill {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(10, 8, 20, 0.82);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(0, 242, 254, 0.25);
-  border-radius: var(--radius-pill);
-  padding: 3px 14px;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
-  pointer-events: auto;
-}
-
-.hud-kanji {
-  font-family: var(--font-japanese);
-  color: var(--twilight-rose);
-  font-weight: 700;
-}
-
-.hud-divider {
-  color: var(--text-muted);
-  opacity: 0.4;
-}
-
-.hud-chapter {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  color: var(--ai-cyan);
-}
-
-.hud-title {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-/* Light Theme for HUD & Mode bar */
-[data-theme="light"] .transition-mode-bar {
-  background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(15, 23, 42, 0.12);
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
-}
-
-[data-theme="light"] .mode-btn {
-  color: #475569;
-}
-
-[data-theme="light"] .mode-btn.active {
-  color: #0f172a;
-  background: rgba(219, 39, 119, 0.15);
-  border-color: rgba(219, 39, 119, 0.4);
-}
-
-[data-theme="light"] .chapter-hud-pill {
-  background: rgba(255, 255, 255, 0.94);
-  border-color: rgba(2, 132, 199, 0.25);
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
-}
-
-/* ==========================================================================
-   OPTION 1: CINEMATIC ENERGY PORTAL SWEEP OVERLAY
-   ========================================================================== */
-.energy-portal-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 999999;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.18s ease, visibility 0.18s ease;
-}
-
-.energy-portal-overlay.is-active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
-}
-
-/* Sweeping energy backdrop veil */
-.energy-backdrop {
+/* --------------------------------------------------------------------------
+   07. APPROACH: Kinetic Pipeline Conduit Wave
+   -------------------------------------------------------------------------- */
+.pipeline-conveyor-beam {
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(16, 12, 32, 0.96) 0%, rgba(5, 3, 12, 0.98) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  top: 180px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff7e95, #00f2fe, #fbbf24, transparent);
   opacity: 0;
-  transition: opacity 0.22s ease;
-}
-
-.energy-portal-overlay.sweeping .energy-backdrop {
-  opacity: 1;
-}
-
-/* Traveling diagonal light streak / warp blade */
-.energy-light-streak {
-  position: absolute;
-  top: -50%;
-  left: -100%;
-  width: 300%;
-  height: 200%;
-  background: linear-gradient(
-    115deg,
-    transparent 0%,
-    transparent 42%,
-    rgba(255, 126, 149, 0.15) 47%,
-    rgba(0, 242, 254, 0.7) 50%,
-    rgba(255, 126, 149, 0.85) 52%,
-    rgba(255, 255, 255, 0.9) 53%,
-    rgba(0, 242, 254, 0.6) 55%,
-    transparent 58%,
-    transparent 100%
-  );
-  transform: rotate(-15deg);
+  filter: blur(1px) drop-shadow(0 0 12px #ff7e95);
   pointer-events: none;
-  filter: blur(8px) drop-shadow(0 0 30px #00f2fe);
-  opacity: 0;
+  z-index: 2;
 }
 
-.energy-portal-overlay.sweeping .energy-light-streak {
-  animation: energy-warp-sweep 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes energy-warp-sweep {
-  0% { transform: translateX(-60%) rotate(-15deg); opacity: 0; }
-  30% { opacity: 1; }
-  70% { opacity: 1; }
-  100% { transform: translateX(60%) rotate(-15deg); opacity: 0; }
-}
-
-/* Center Modern Glass Chapter Card */
-.energy-card {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  padding: 34px 50px;
-  background: rgba(17, 13, 30, 0.92);
-  border: 1px solid rgba(0, 242, 254, 0.4);
-  border-radius: 24px;
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 50px rgba(0, 242, 254, 0.35);
-  opacity: 0;
-  transform: scale(0.85) translateY(12px);
-  transition: opacity 0.2s ease, transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
-  overflow: hidden;
-  max-width: 90vw;
-}
-
-.energy-portal-overlay.sweeping .energy-card {
+.signature-section[data-signature="approach"].is-page-active .pipeline-conveyor-beam {
   opacity: 1;
-  transform: scale(1) translateY(0);
+  animation: pipeline-conveyor-run 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.energy-laser-line {
+@keyframes pipeline-conveyor-run {
+  0% { transform: scaleX(0); transform-origin: left; opacity: 0; }
+  40% { opacity: 1; }
+  100% { transform: scaleX(1); transform-origin: left; opacity: 0; }
+}
+
+.signature-section[data-signature="approach"].is-page-active .approach-step {
+  animation: step-conveyor-pop 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.signature-section[data-signature="approach"].is-page-active .approach-step:nth-child(1) { animation-delay: 0.1s; }
+.signature-section[data-signature="approach"].is-page-active .approach-step:nth-child(2) { animation-delay: 0.25s; }
+.signature-section[data-signature="approach"].is-page-active .approach-step:nth-child(3) { animation-delay: 0.40s; }
+.signature-section[data-signature="approach"].is-page-active .approach-step:nth-child(4) { animation-delay: 0.55s; }
+
+@keyframes step-conveyor-pop {
+  0% { opacity: 0; transform: translateY(30px); }
+  60% { transform: translateY(-6px); border-color: rgba(255, 126, 149, 0.6); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   08. BEYOND CODE: Prismatic RGB Cinema Lens Flare Wash
+   -------------------------------------------------------------------------- */
+.prismatic-wash-overlay {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #00f2fe, #ff7e95, transparent);
-  animation: laser-line-pulse 1.5s ease-in-out infinite alternate;
-}
-
-@keyframes laser-line-pulse {
-  0% { opacity: 0.5; filter: drop-shadow(0 0 6px #00f2fe); }
-  100% { opacity: 1; filter: drop-shadow(0 0 16px #ff7e95); }
-}
-
-.energy-kanji {
-  font-family: var(--font-japanese);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--twilight-rose);
-  letter-spacing: 0.3em;
-  margin-bottom: 4px;
-  text-shadow: 0 0 18px rgba(255, 126, 149, 0.7);
-}
-
-.energy-meta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.energy-badge {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--ai-cyan);
-  letter-spacing: 0.2em;
-}
-
-.energy-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #ff7e95;
-  box-shadow: 0 0 8px #ff7e95;
-}
-
-.energy-status {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  letter-spacing: 0.15em;
-}
-
-.energy-title {
-  font-family: var(--font-display);
-  font-size: 1.7rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.05em;
-  margin-bottom: 16px;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
-}
-
-.energy-progress-bar {
-  width: 100%;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.energy-progress-fill {
-  width: 0%;
+  left: -100%;
+  width: 300%;
   height: 100%;
-  background: linear-gradient(90deg, #00f2fe, #ff7e95);
-  border-radius: 3px;
-  transition: width 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 0, 128, 0.08) 35%,
+    rgba(0, 255, 255, 0.12) 50%,
+    rgba(255, 230, 0, 0.08) 65%,
+    transparent 100%
+  );
+  filter: blur(24px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
 }
 
-.energy-portal-overlay.sweeping .energy-progress-fill {
-  width: 100%;
+.signature-section[data-signature="beyond"].is-page-active .prismatic-wash-overlay {
+  opacity: 1;
+  animation: prismatic-wash-sweep 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Light Theme for Option 1 */
-[data-theme="light"] .energy-backdrop {
-  background: radial-gradient(circle at center, rgba(253, 242, 248, 0.94) 0%, rgba(243, 232, 255, 0.97) 100%);
+@keyframes prismatic-wash-sweep {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(120%); opacity: 0; }
 }
 
-[data-theme="light"] .energy-card {
-  background: rgba(255, 255, 255, 0.97);
-  border-color: rgba(2, 132, 199, 0.4);
-  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.18), 0 0 40px rgba(2, 132, 199, 0.2);
+.signature-section[data-signature="beyond"].is-page-active .beyond-card {
+  animation: beyond-lens-reveal 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-[data-theme="light"] .energy-title {
-  color: #0f172a;
+.signature-section[data-signature="beyond"].is-page-active .beyond-card:nth-child(1) { animation-delay: 0.06s; }
+.signature-section[data-signature="beyond"].is-page-active .beyond-card:nth-child(2) { animation-delay: 0.16s; }
+.signature-section[data-signature="beyond"].is-page-active .beyond-card:nth-child(3) { animation-delay: 0.26s; }
+.signature-section[data-signature="beyond"].is-page-active .beyond-card:nth-child(4) { animation-delay: 0.36s; }
+
+@keyframes beyond-lens-reveal {
+  0% { opacity: 0; transform: translateY(30px) rotate(1.5deg); }
+  100% { opacity: 1; transform: translateY(0) rotate(0); }
 }
 
-/* 3D Section Depth Bloom on Focus */
-.section-depth-bloom {
-  animation: section-bloom 0.68s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+/* --------------------------------------------------------------------------
+   09. CONTACT: Radar Beacon Ping & Radiating Signal Sweep
+   -------------------------------------------------------------------------- */
+.radar-ping-emitter {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  pointer-events: none;
+  z-index: 1;
 }
 
-@keyframes section-bloom {
+.radar-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--twilight-rose);
+  opacity: 0;
+}
+
+.signature-section[data-signature="contact"].is-page-active .radar-ripple.ring-1 {
+  animation: radar-ping 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.signature-section[data-signature="contact"].is-page-active .radar-ripple.ring-2 {
+  animation: radar-ping 2.5s 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.signature-section[data-signature="contact"].is-page-active .radar-ripple.ring-3 {
+  animation: radar-ping 2.5s 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+@keyframes radar-ping {
+  0% { transform: scale(0.3); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.signature-section[data-signature="contact"].is-page-active .contact-card-main {
+  animation: contact-bloom-focus 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes contact-bloom-focus {
   0% {
-    transform: scale(0.96) translateY(20px);
-    filter: blur(6px);
-    opacity: 0.5;
+    opacity: 0;
+    transform: translateY(35px) scale(0.96);
+    box-shadow: 0 0 0 rgba(255, 126, 149, 0);
+  }
+  60% {
+    box-shadow: 0 0 45px rgba(255, 126, 149, 0.35);
   }
   100% {
-    transform: scale(1) translateY(0);
-    filter: blur(0px);
     opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
