@@ -26,10 +26,10 @@
 - Create: `css/bento.css`
 - Create: `css/modal.css`
 
-- [ ] **Step 1: Create design system variables and reset in `css/main.css`** (fonts, colors, twilight gradients, AI cyan/violet accents, light/dark theme CSS variables).
-- [ ] **Step 2: Create `css/landscape.css`** for the illustrated atmospheric hero backdrop (layered silhouette mountains, glowing pagoda, arched wooden bridge, warm lantern glow pulses, animated water reflections).
-- [ ] **Step 3: Create `css/glass.css`, `css/bento.css`, and `css/modal.css`** for glassmorphic cards, Bento grid layouts, pill badges, and detail drawer overlays.
-- [ ] **Step 4: Commit**
+- [x] **Step 1: Create design system variables and reset in `css/main.css`** (fonts, colors, twilight gradients, AI cyan/violet accents, light/dark theme CSS variables).
+- [x] **Step 2: Create `css/landscape.css`** for the illustrated atmospheric hero backdrop (layered silhouette mountains, glowing pagoda, arched wooden bridge, warm lantern glow pulses, animated water reflections).
+- [x] **Step 3: Create `css/glass.css`, `css/bento.css`, and `css/modal.css`** for glassmorphic cards, Bento grid layouts, pill badges, and detail drawer overlays.
+- [x] **Step 4: Commit**
 ```bash
 git add css/
 git commit -m "style: add modern twilight design system, landscape, and glass styles"
@@ -41,10 +41,10 @@ git commit -m "style: add modern twilight design system, landscape, and glass st
 **Files:**
 - Create: `js/canvas-petals.js`
 
-- [ ] **Step 1: Implement particle physics simulation** combining drifting cherry blossom petals (wind drift, flutter, rotation) with glowing AI neural nodes.
-- [ ] **Step 2: Implement proximity line connections** between close AI nodes and mouse interaction/cursor repulsion.
-- [ ] **Step 3: Implement devicePixelRatio scaling and resize handler** for razor-sharp rendering on Retina and 4K displays.
-- [ ] **Step 4: Commit**
+- [x] **Step 1: Implement particle physics simulation** combining drifting cherry blossom petals (wind drift, flutter, rotation) with glowing AI neural nodes.
+- [x] **Step 2: Implement proximity line connections** between close AI nodes and mouse interaction/cursor repulsion.
+- [x] **Step 3: Implement devicePixelRatio scaling and resize handler** for razor-sharp rendering on Retina and 4K displays.
+- [x] **Step 4: Commit**
 ```bash
 git add js/canvas-petals.js
 git commit -m "feat: add interactive canvas petal and neural network simulation"
@@ -58,10 +58,10 @@ git commit -m "feat: add interactive canvas petal and neural network simulation"
 - Create: `js/playground.js`
 - Create: `js/theme.js`
 
-- [ ] **Step 1: Write `js/projects-data.js`** containing complete, rich information for all 8 featured projects (J.A.R.V.I.S., TrackX, CropDiseaseAI, Paper Plot AI, Samadhan Setu, Personal Finance AI, Automated Attendance Portal, Productivity Chrome Extensions) with Problem, Solution, Architecture, Features, and Links.
-- [ ] **Step 2: Write `js/playground.js`** creating the interactive Gemini Prompt & AI Agent sandbox simulation with realistic streaming responses and preset prompts.
-- [ ] **Step 3: Write `js/theme.js`** supporting ambient sound synth (zen wind chime via Web Audio API) and dark/light theme switching with `localStorage` persistence.
-- [ ] **Step 4: Commit**
+- [x] **Step 1: Write `js/projects-data.js`** containing complete, rich information for all 8 featured projects (J.A.R.V.I.S., TrackX, CropDiseaseAI, Paper Plot AI, Samadhan Setu, Personal Finance AI, Automated Attendance Portal, Productivity Chrome Extensions) with Problem, Solution, Architecture, Features, and Links.
+- [x] **Step 2: Write `js/playground.js`** creating the interactive Gemini Prompt & AI Agent sandbox simulation with realistic streaming responses and preset prompts.
+- [x] **Step 3: Write `js/theme.js`** supporting ambient sound synth (zen wind chime via Web Audio API) and dark/light theme switching with `localStorage` persistence.
+- [x] **Step 4: Commit**
 ```bash
 git add js/projects-data.js js/playground.js js/theme.js
 git commit -m "feat: add projects data model, prompt sandbox, and theme engine"
@@ -74,9 +74,9 @@ git commit -m "feat: add projects data model, prompt sandbox, and theme engine"
 - Create: `index.html`
 - Create: `js/app.js`
 
-- [ ] **Step 1: Create semantic `index.html`** structuring the floating frosted glass header, hero section with watermark calligraphy and lantern, About Bento, Skills Matrix, Playground, Projects Bento, Experience/Hackathon timeline, Certifications vault, Approach pipeline, Beyond Code showcase, Currently Building ticker, and Contact card.
-- [ ] **Step 2: Create `js/app.js`** wiring up modal dialogs, category filter buttons, stats count-up animation, mobile drawer toggle, and copy-email toasts.
-- [ ] **Step 3: Commit**
+- [x] **Step 1: Create semantic `index.html`** structuring the floating frosted glass header, hero section with watermark calligraphy and lantern, About Bento, Skills Matrix, Playground, Projects Bento, Experience/Hackathon timeline, Certifications vault, Approach pipeline, Beyond Code showcase, Currently Building ticker, and Contact card.
+- [x] **Step 2: Create `js/app.js`** wiring up modal dialogs, category filter buttons, stats count-up animation, mobile drawer toggle, and copy-email toasts.
+- [x] **Step 3: Commit**
 ```bash
 git add index.html js/app.js
 git commit -m "feat: implement master portfolio page and interactive application logic"
@@ -88,10 +88,10 @@ git commit -m "feat: implement master portfolio page and interactive application
 **Files:**
 - Test via browser subagent and local HTTP server
 
-- [ ] **Step 1: Start a lightweight HTTP static server** on port 3000 (e.g., using Python `http.server` or `npx serve`).
-- [ ] **Step 2: Dispatch browser subagent** to navigate to `http://localhost:3000`, verify page load, inspect visuals, test project modal, test theme toggle, test filter buttons, and capture visual screenshots.
-- [ ] **Step 3: Verify zero console errors and smooth animations**.
-- [ ] **Step 4: Commit final changes**.
+- [x] **Step 1: Start a lightweight HTTP static server** on port 3000 (e.g., using Python `http.server` or `npx serve`).
+- [x] **Step 2: Dispatch browser subagent** to navigate to `http://localhost:3000`, verify page load, inspect visuals, test project modal, test theme toggle, test filter buttons, and capture visual screenshots.
+- [x] **Step 3: Verify zero console errors and smooth animations**.
+- [x] **Step 4: Commit final changes**.
 ```bash
 git add .
 git commit -m "feat: complete Pratap Varma AI engineer portfolio implementation and verification"
