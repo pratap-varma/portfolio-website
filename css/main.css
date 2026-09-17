@@ -1060,3 +1060,409 @@ button {
   }
 }
 
+/* ==========================================================================
+   PER-PAGE MENU TRANSITION STAGE & ENGINES
+   A unique, visible cinematic transition when moving from page to page
+   ========================================================================== */
+.page-transition-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  overflow: hidden;
+}
+
+.page-transition-stage.stage-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* 1. ABOUT: Sumi-e Fluid Ink Wash Wipe */
+.page-transition-stage.fx-about .transition-canvas-ink {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(13, 9, 23, 0.96) 0%, rgba(5, 3, 10, 0.98) 100%);
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  animation: inkWipeAcross 0.44s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-transition-stage.fx-about .ink-sweep-blade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  background: linear-gradient(90deg, transparent, rgba(255, 126, 149, 0.6), #ffffff, transparent);
+  filter: blur(12px);
+  animation: inkBladeMotion 0.44s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-transition-stage.fx-about .ink-emblem-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-japanese);
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: var(--twilight-rose);
+  text-shadow: 0 0 30px rgba(255, 126, 149, 0.8);
+  animation: inkTextPulse 0.44s ease forwards;
+}
+
+@keyframes inkWipeAcross {
+  0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+  50% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  100% { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); }
+}
+
+@keyframes inkBladeMotion {
+  0% { left: -140px; }
+  50% { left: 50%; }
+  100% { left: 100vw; }
+}
+
+@keyframes inkTextPulse {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* 2. ARSENAL: Cybernetic Laser Grid Slicer */
+.page-transition-stage.fx-arsenal .transition-canvas-cyber {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 11, 20, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: cyberFlash 0.44s ease forwards;
+}
+
+.page-transition-stage.fx-arsenal .cyber-laser-h {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--ai-cyan), #ffffff, var(--ai-cyan), transparent);
+  box-shadow: 0 0 25px var(--ai-cyan), 0 0 50px var(--ai-cyan);
+  animation: cyberLaserH 0.44s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.page-transition-stage.fx-arsenal .cyber-laser-v {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(180deg, transparent, var(--twilight-rose), #ffffff, var(--twilight-rose), transparent);
+  box-shadow: 0 0 25px var(--twilight-rose), 0 0 50px var(--twilight-rose);
+  animation: cyberLaserV 0.44s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.page-transition-stage.fx-arsenal .cyber-grid-flash {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(0, 242, 254, 0.15) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 242, 254, 0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: cyberGridExpand 0.44s ease forwards;
+}
+
+@keyframes cyberFlash {
+  0% { opacity: 0; }
+  40% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes cyberLaserH {
+  0% { transform: scaleX(0); }
+  50% { transform: scaleX(1); height: 6px; }
+  100% { transform: scaleX(1); height: 0px; }
+}
+@keyframes cyberLaserV {
+  0% { transform: scaleY(0); }
+  50% { transform: scaleY(1); width: 6px; }
+  100% { transform: scaleY(1); width: 0px; }
+}
+@keyframes cyberGridExpand {
+  0% { transform: scale(0.7); opacity: 0; }
+  50% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.2); opacity: 0; }
+}
+
+/* 3. PLAYGROUND: CRT Scanline & Terminal Glitch */
+.page-transition-stage.fx-playground .transition-canvas-crt {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 7, 12, 0.95);
+  animation: crtWipe 0.44s ease forwards;
+}
+
+.page-transition-stage.fx-playground .crt-scanline-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 18px;
+  background: linear-gradient(180deg, transparent, rgba(0, 242, 254, 0.8), #ffffff, rgba(0, 242, 254, 0.8), transparent);
+  box-shadow: 0 0 35px var(--ai-cyan);
+  animation: crtScanDrop 0.44s linear forwards;
+}
+
+.page-transition-stage.fx-playground .crt-glitch-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--ai-cyan);
+  text-shadow: -2px 0 #ff0055, 2px 0 #00ffff, 0 0 20px var(--ai-cyan);
+  animation: crtGlitchText 0.44s steps(3) forwards;
+}
+
+@keyframes crtWipe {
+  0% { opacity: 0; }
+  35% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes crtScanDrop {
+  0% { top: -20px; }
+  100% { top: 105vh; }
+}
+@keyframes crtGlitchText {
+  0% { opacity: 0; transform: translate(-52%, -48%) skewX(-10deg); }
+  40% { opacity: 1; transform: translate(-48%, -52%) skewX(10deg); }
+  70% { opacity: 1; transform: translate(-50%, -50%) skewX(0deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* 4. PROJECTS: 3D Spatial Deck Fan-Out Warp */
+.page-transition-stage.fx-projects .transition-canvas-deck {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 22, 0.94);
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: deckWarp 0.44s ease forwards;
+}
+
+.page-transition-stage.fx-projects .deck-warp-panel {
+  position: absolute;
+  width: 420px;
+  height: 280px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(0, 242, 254, 0.6);
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(142, 45, 226, 0.2));
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 242, 254, 0.3);
+  animation: deckCardZoom 0.44s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes deckWarp {
+  0% { opacity: 0; }
+  45% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes deckCardZoom {
+  0% { transform: scale(0.4) rotateX(40deg) rotateY(-20deg); opacity: 0; }
+  50% { transform: scale(1.05) rotateX(0deg) rotateY(0deg); opacity: 1; }
+  100% { transform: scale(1.6) rotateX(-15deg); opacity: 0; }
+}
+
+/* 5. EXPERIENCE: Chrono Temporal Laser Stream */
+.page-transition-stage.fx-experience .transition-canvas-chrono {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 8, 20, 0.94);
+  animation: chronoFade 0.44s ease forwards;
+}
+
+.page-transition-stage.fx-experience .chrono-light-stream {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #ffffff, var(--twilight-rose), var(--ai-cyan), #ffffff);
+  box-shadow: 0 0 30px var(--twilight-rose), 0 0 60px var(--ai-cyan);
+  animation: chronoStreamRush 0.44s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes chronoFade {
+  0% { opacity: 0; }
+  40% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes chronoStreamRush {
+  0% { transform: translateX(-50%) scaleY(0); }
+  50% { transform: translateX(-50%) scaleY(1); width: 8px; }
+  100% { transform: translateX(-50%) scaleY(1); width: 0px; }
+}
+
+/* 6. CERTIFICATIONS: Quantum Hexagonal Sacred Seal */
+.page-transition-stage.fx-certifications .transition-canvas-quantum {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 10, 24, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: quantumFade 0.44s ease forwards;
+}
+
+.page-transition-stage.fx-certifications .quantum-hex-ring-fx {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 2px dashed #f59e0b;
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.5), inset 0 0 30px rgba(0, 242, 254, 0.3);
+  animation: quantumSpinUnlock 0.44s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes quantumFade {
+  0% { opacity: 0; }
+  45% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes quantumSpinUnlock {
+  0% { transform: scale(0.3) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.1) rotate(180deg); opacity: 1; }
+  100% { transform: scale(2.2) rotate(360deg); opacity: 0; }
+}
+
+/* 7. APPROACH: Kinetic Conveyor Wave */
+.page-transition-stage.fx-approach .transition-canvas-pipeline {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 12, 22, 0.94);
+  display: flex;
+  align-items: center;
+  animation: pipelineFade 0.44s ease forwards;
+}
+
+.page-transition-stage.fx-approach .pipeline-conveyor-streak {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, transparent, var(--ai-cyan), #ffffff, var(--twilight-rose), transparent);
+  box-shadow: 0 0 40px var(--ai-cyan);
+  animation: pipelineStreakRush 0.44s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pipelineFade {
+  0% { opacity: 0; }
+  40% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes pipelineStreakRush {
+  0% { transform: scaleX(0); }
+  50% { transform: scaleX(1); height: 10px; }
+  100% { transform: scaleX(1); height: 0px; }
+}
+
+/* 8. BEYOND: Prismatic Spectral RGB Wave */
+.page-transition-stage.fx-beyond .transition-canvas-prism {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 126, 149, 0.85), rgba(142, 45, 226, 0.85), rgba(0, 242, 254, 0.85));
+  mix-blend-mode: screen;
+  filter: blur(25px);
+  animation: prismWave 0.44s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes prismWave {
+  0% { opacity: 0; transform: scale(0.6) rotate(-10deg); }
+  50% { opacity: 0.95; transform: scale(1.05) rotate(0deg); }
+  100% { opacity: 0; transform: scale(1.3) rotate(8deg); }
+}
+
+/* 9. CONTACT: Sonar Radar Beacon Shockwave */
+.page-transition-stage.fx-contact .transition-canvas-radar {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 8, 22, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: radarStageFade 0.44s ease forwards;
+}
+
+.page-transition-stage.fx-contact .radar-shockwave-ring {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--twilight-rose);
+  box-shadow: 0 0 50px var(--twilight-rose);
+  animation: radarShockExpand 0.44s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes radarStageFade {
+  0% { opacity: 0; }
+  45% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes radarShockExpand {
+  0% { transform: scale(0.2); opacity: 1; }
+  60% { opacity: 0.9; }
+  100% { transform: scale(3.2); opacity: 0; }
+}
+
+/* 10. HERO: Twilight Sakura Vortex */
+.page-transition-stage.fx-hero .transition-canvas-hero {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 126, 149, 0.35) 0%, rgba(13, 9, 23, 0.95) 70%);
+  animation: heroVortexFade 0.44s ease forwards;
+}
+
+.page-transition-stage.fx-hero .hero-vortex-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 2px solid var(--twilight-rose);
+  box-shadow: 0 0 45px var(--twilight-rose);
+  animation: heroVortexSpin 0.44s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroVortexFade {
+  0% { opacity: 0; }
+  45% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes heroVortexSpin {
+  0% { transform: translate(-50%, -50%) scale(0.3) rotate(0deg); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2.8) rotate(180deg); opacity: 0; }
+}
+
+/* Destination section arrival aura */
+.section-arrival-glow {
+  animation: sectionGlowArrival 0.75s ease-out forwards;
+}
+
+@keyframes sectionGlowArrival {
+  0% {
+    filter: brightness(1.2) contrast(1.05);
+    transform: scale(0.985);
+  }
+  100% {
+    filter: brightness(1) contrast(1);
+    transform: scale(1);
+  }
+}
+
+

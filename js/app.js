@@ -306,10 +306,60 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevChapterBtn = document.getElementById('prev-chapter-btn');
   const nextChapterBtn = document.getElementById('next-chapter-btn');
   const signatureSections = document.querySelectorAll('.signature-section');
-  const dockNavLinks = document.querySelectorAll('.floating-bottom-dock .dock-nav-item, .nav-links a');
+  const allNavLinks = document.querySelectorAll('.desktop-nav-link, .floating-bottom-dock .nav-link, .mobile-nav-link');
+  const transitionStage = document.getElementById('page-transition-stage');
+  const transitionFxContainer = document.getElementById('transition-fx-container');
 
-  function updateDockActiveState(activeId) {
-    dockNavLinks.forEach(link => {
+  let isPageTransitioning = false;
+
+  // Transition Markup Templates for Each Individual Destination Page
+  const TRANSITION_TEMPLATES = {
+    about: `
+      <div class="transition-canvas-ink">
+        <div class="ink-sweep-blade"></div>
+        <div class="ink-emblem-text">自己紹介 · ABOUT</div>
+      </div>`,
+    arsenal: `
+      <div class="transition-canvas-cyber">
+        <div class="cyber-grid-flash"></div>
+        <div class="cyber-laser-h"></div>
+        <div class="cyber-laser-v"></div>
+      </div>`,
+    playground: `
+      <div class="transition-canvas-crt">
+        <div class="crt-scanline-bar"></div>
+        <div class="crt-glitch-badge">⚡ AI AGENT SANDBOX</div>
+      </div>`,
+    projects: `
+      <div class="transition-canvas-deck">
+        <div class="deck-warp-panel"></div>
+      </div>`,
+    experience: `
+      <div class="transition-canvas-chrono">
+        <div class="chrono-light-stream"></div>
+      </div>`,
+    certifications: `
+      <div class="transition-canvas-quantum">
+        <div class="quantum-hex-ring-fx"></div>
+      </div>`,
+    approach: `
+      <div class="transition-canvas-pipeline">
+        <div class="pipeline-conveyor-streak"></div>
+      </div>`,
+    beyond: `
+      <div class="transition-canvas-prism"></div>`,
+    contact: `
+      <div class="transition-canvas-radar">
+        <div class="radar-shockwave-ring"></div>
+      </div>`,
+    hero: `
+      <div class="transition-canvas-hero">
+        <div class="hero-vortex-ring"></div>
+      </div>`
+  };
+
+  function updateNavActiveState(activeId) {
+    allNavLinks.forEach(link => {
       const href = link.getAttribute('href');
       if (href === `#${activeId}`) {
         link.classList.add('active');
@@ -330,14 +380,15 @@ document.addEventListener('DOMContentLoaded', () => {
     return 0;
   }
 
-  // IntersectionObserver to activate per-section unique signature animation
+  // IntersectionObserver to track active page during natural scroll
   const sectionSignatureObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-page-active');
-        updateDockActiveState(entry.target.id);
+        if (!isPageTransitioning) {
+          updateNavActiveState(entry.target.id);
+        }
       } else {
-        // Reset when scrolled out so re-entry plays animation cleanly
         entry.target.classList.remove('is-page-active');
       }
     });
@@ -350,31 +401,62 @@ document.addEventListener('DOMContentLoaded', () => {
     sectionSignatureObserver.observe(section);
   });
 
-  // Smooth in-page navigation without screen-covering overlays
+  // Distinct Per-Page Cinematic Transition Engine for Menu Navigation
   function navigateToSection(targetId) {
+    if (isPageTransitioning) return;
     const targetEl = document.getElementById(targetId);
     if (!targetEl) return;
+
+    isPageTransitioning = true;
+    updateNavActiveState(targetId);
 
     const chapterMeta = CHAPTERS_LIST.find(c => c.id === targetId);
     if (chapterMeta && typeof window.playZenSound === 'function') {
       window.playZenSound(chapterMeta.soundFreq || 528, 'triangle', 0.45);
     }
 
-    const headerOffset = 60;
-    const elementPosition = targetEl.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    const fxType = targetId in TRANSITION_TEMPLATES ? targetId : 'hero';
 
-    window.scrollTo({
-      top: Math.max(0, offsetPosition),
-      behavior: 'smooth'
-    });
+    // Step 1: Render and activate this page's signature transition
+    if (transitionStage && transitionFxContainer) {
+      transitionFxContainer.innerHTML = TRANSITION_TEMPLATES[fxType];
+      transitionStage.className = `page-transition-stage stage-active fx-${fxType}`;
+    }
 
-    // Mark active for signature animation
-    targetEl.classList.add('is-page-active');
-    updateDockActiveState(targetId);
+    // Step 2: At midpoint (220ms), instant teleport without slow scroll
+    setTimeout(() => {
+      const headerOffset = 65;
+      const elementPosition = targetEl.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'instant'
+      });
+
+      // Target section entrance flair
+      targetEl.classList.add('is-page-active', 'section-arrival-glow');
+      setTimeout(() => targetEl.classList.remove('section-arrival-glow'), 800);
+
+      // Harmonized arrival chime
+      if (typeof window.playZenSound === 'function') {
+        setTimeout(() => {
+          window.playZenSound((chapterMeta?.soundFreq || 528) * 1.25, 'sine', 0.4);
+        }, 50);
+      }
+    }, 220);
+
+    // Step 3: Complete transition and clear stage (440ms)
+    setTimeout(() => {
+      if (transitionStage) {
+        transitionStage.className = 'page-transition-stage';
+        if (transitionFxContainer) transitionFxContainer.innerHTML = '';
+      }
+      isPageTransitioning = false;
+    }, 440);
   }
 
-  // Intercept in-page navigation links (nav links, dock items, buttons)
+  // Intercept all in-page navigation clicks (Desktop menu bar, bottom dock, buttons)
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
@@ -383,6 +465,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetEl = document.getElementById(targetId);
         if (targetEl) {
           e.preventDefault();
+          // Close mobile drawer if open
+          const drawer = document.getElementById('mobile-drawer');
+          if (drawer) drawer.classList.remove('open');
           navigateToSection(targetId);
         }
       }
