@@ -388,3 +388,163 @@ button {
   0% { transform: scale(0.6); opacity: 1; }
   100% { transform: scale(2.2); opacity: 0; }
 }
+
+/* ==========================================================================
+   ANIMATED SECTION DIVIDERS & TRANSITION EFFECTS
+   Glowing hairline borders with traveling photon light pulses
+   ========================================================================== */
+.section-divider-wrap {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.section-divider {
+  position: relative;
+  width: 100%;
+  max-width: var(--max-width);
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 126, 149, 0.15) 20%, 
+    rgba(255, 126, 149, 0.4) 50%, 
+    rgba(0, 242, 254, 0.2) 80%, 
+    transparent 100%
+  );
+  overflow: hidden;
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -200px;
+  width: 200px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ff7e95, #00f2fe, transparent);
+  filter: blur(1px) drop-shadow(0 0 10px #ff7e95);
+  animation: photon-travel 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes photon-travel {
+  0% { transform: translateX(0); opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateX(calc(100vw + 400px)); opacity: 0; }
+}
+
+[data-theme="light"] .section-divider {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(219, 39, 119, 0.15) 20%, 
+    rgba(219, 39, 119, 0.35) 50%, 
+    rgba(2, 132, 199, 0.2) 80%, 
+    transparent 100%
+  );
+}
+
+[data-theme="light"] .section-divider::after {
+  background: linear-gradient(90deg, transparent, #db2777, #0284c7, transparent);
+  filter: blur(1px) drop-shadow(0 0 8px #db2777);
+}
+
+.divider-gem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-deep);
+  border: 1px solid rgba(255, 126, 149, 0.4);
+  border-radius: 50%;
+  color: var(--twilight-rose);
+  font-size: 0.65rem;
+  box-shadow: 0 0 12px rgba(255, 126, 149, 0.35);
+  z-index: 2;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+[data-theme="light"] .divider-gem {
+  background: #ffffff;
+  border-color: rgba(219, 39, 119, 0.35);
+  color: var(--twilight-rose);
+  box-shadow: 0 0 10px rgba(219, 39, 119, 0.2);
+}
+
+/* ==========================================================================
+   SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered Children Reveal */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(28px) scale(0.97);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-stagger.is-revealed > * {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-stagger.is-revealed > *:nth-child(1) { transition-delay: 0.04s; }
+.reveal-stagger.is-revealed > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger.is-revealed > *:nth-child(3) { transition-delay: 0.20s; }
+.reveal-stagger.is-revealed > *:nth-child(4) { transition-delay: 0.28s; }
+.reveal-stagger.is-revealed > *:nth-child(5) { transition-delay: 0.36s; }
+.reveal-stagger.is-revealed > *:nth-child(6) { transition-delay: 0.44s; }
+.reveal-stagger.is-revealed > *:nth-child(7) { transition-delay: 0.52s; }
+.reveal-stagger.is-revealed > *:nth-child(8) { transition-delay: 0.60s; }
+
+/* Subtle Watermark Float */
+.watermark-text {
+  animation: watermark-drift 12s ease-in-out infinite alternate;
+}
+
+@keyframes watermark-drift {
+  0% { transform: translate(-50%, -60%) scale(1); }
+  100% { transform: translate(-50%, -56%) scale(1.03); }
+}
