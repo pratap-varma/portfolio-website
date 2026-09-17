@@ -1105,6 +1105,9 @@
 
   <!-- Floating Bottom Glass Navigation Dock -->
   <nav class="floating-bottom-dock" aria-label="Main Navigation">
+    <button class="dock-stepper-btn" id="prev-chapter-btn" aria-label="Previous Page" title="Previous Page (ArrowUp / K)">
+      <span>▲</span>
+    </button>
     <ul class="nav-links">
       <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
       <li class="nav-item"><a href="#arsenal" class="nav-link">Arsenal</a></li>
@@ -1115,6 +1118,9 @@
       <li class="nav-item"><a href="#beyond" class="nav-link">Beyond Code</a></li>
       <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
+    <button class="dock-stepper-btn" id="next-chapter-btn" aria-label="Next Page" title="Next Page (ArrowDown / J)">
+      <span>▼</span>
+    </button>
   </nav>
 
   <!-- Footer -->
@@ -1157,20 +1163,20 @@
         <div>
           <div class="modal-section-title"><span>⚡</span> Key Capabilities & Highlights</div>
           <ul class="modal-features-list" id="modal-features">
-            <!-- Dynamically populated -->
+            <!-- Features populated by app.js -->
           </ul>
         </div>
 
         <div>
-          <div class="modal-section-title"><span>🛠️</span> Technologies Utilized</div>
-          <div class="tag-cloud" id="modal-tech">
-            <!-- Dynamically populated -->
+          <div class="modal-section-title"><span>🛠️</span> Tech Stack & Frameworks</div>
+          <div class="modal-tech-strip" id="modal-tech">
+            <!-- Tech tags populated by app.js -->
           </div>
         </div>
       </div>
 
       <div class="modal-footer">
-        <div class="modal-links-group">
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
           <a href="#" id="modal-github-link" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
             <span>View Source Code</span>
             <span>↗</span>
@@ -1182,6 +1188,40 @@
         </div>
         <button class="btn btn-secondary" id="modal-dismiss-btn">Dismiss</button>
       </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       CYBER-TORII SHUTTER PAGE TRANSITION OVERLAY
+       ========================================== -->
+  <div class="torii-shutter-overlay" id="torii-shutter" aria-hidden="true">
+    <!-- Left Sliding Shutter Panel -->
+    <div class="shutter-panel shutter-panel-left">
+      <div class="shutter-lattice"></div>
+      <div class="shutter-laser-edge"></div>
+    </div>
+
+    <!-- Right Sliding Shutter Panel -->
+    <div class="shutter-panel shutter-panel-right">
+      <div class="shutter-lattice"></div>
+      <div class="shutter-laser-edge"></div>
+    </div>
+
+    <!-- Center Torii Gate & Chapter Emblem -->
+    <div class="torii-emblem-center" id="shutter-emblem">
+      <div class="torii-gate-icon">
+        <svg viewBox="0 0 100 80" class="torii-svg" fill="none">
+          <path d="M 6 18 C 30 13, 70 13, 94 18" stroke="var(--twilight-rose)" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M 14 28 L 86 28" stroke="var(--twilight-rose)" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M 28 28 L 28 78" stroke="var(--twilight-rose)" stroke-width="4.5"/>
+          <path d="M 72 28 L 72 78" stroke="var(--twilight-rose)" stroke-width="4.5"/>
+          <circle cx="50" cy="23" r="3.5" fill="var(--ai-cyan)"/>
+        </svg>
+      </div>
+      <div class="shutter-kanji" id="shutter-kanji">鳥居転換</div>
+      <div class="shutter-chapter-badge" id="shutter-badge">CHAPTER 01</div>
+      <div class="shutter-title" id="shutter-title">PROFILE & PHILOSOPHY</div>
+      <div class="shutter-energy-ring"></div>
     </div>
   </div>
 

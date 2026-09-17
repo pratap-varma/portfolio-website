@@ -286,4 +286,149 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   revealElements.forEach(el => revealObserver.observe(el));
+
+  // ==========================================
+  // 8. Japanese Cyber-Torii Shutter Transition (Option 3 Demo)
+  // ==========================================
+  const toriiShutter = document.getElementById('torii-shutter');
+  const shutterKanji = document.getElementById('shutter-kanji');
+  const shutterBadge = document.getElementById('shutter-badge');
+  const shutterTitle = document.getElementById('shutter-title');
+  const prevChapterBtn = document.getElementById('prev-chapter-btn');
+  const nextChapterBtn = document.getElementById('next-chapter-btn');
+
+  const CHAPTERS_LIST = [
+    { id: 'hero', chapter: 'CHAPTER 00', kanji: '人工知能', title: 'The Twilight Sanctuary' },
+    { id: 'about', chapter: 'CHAPTER 01', kanji: '自己紹介', title: 'Profile & Philosophy' },
+    { id: 'arsenal', chapter: 'CHAPTER 02', kanji: '技術兵器', title: 'Technical Arsenal' },
+    { id: 'playground', chapter: 'CHAPTER 03', kanji: '実証実験', title: 'AI Agent Sandbox' },
+    { id: 'projects', chapter: 'CHAPTER 04', kanji: '実績作品', title: 'Featured Artifacts' },
+    { id: 'experience', chapter: 'CHAPTER 05', kanji: '経歴道程', title: 'Journey & Hackathons' },
+    { id: 'certifications', chapter: 'CHAPTER 06', kanji: '資格認証', title: 'Credentials Vault' },
+    { id: 'approach', chapter: 'CHAPTER 07', kanji: '開発手法', title: 'Engineering Lifecycle' },
+    { id: 'beyond', chapter: 'CHAPTER 08', kanji: '趣味情熱', title: 'Beyond Code' },
+    { id: 'contact', chapter: 'CHAPTER 09', kanji: '接続連絡', title: 'Currently Building & Connect' }
+  ];
+
+  let isTransitioning = false;
+
+  function getCurrentChapterIndex() {
+    const scrollMiddle = window.scrollY + window.innerHeight * 0.35;
+    for (let i = CHAPTERS_LIST.length - 1; i >= 0; i--) {
+      const el = document.getElementById(CHAPTERS_LIST[i].id);
+      if (el && el.offsetTop <= scrollMiddle) {
+        return i;
+      }
+    }
+    return 0;
+  }
+
+  function triggerToriiTransition(targetId) {
+    if (isTransitioning || !toriiShutter) return;
+    const targetEl = document.getElementById(targetId);
+    if (!targetEl) return;
+
+    const chapterMeta = CHAPTERS_LIST.find(c => c.id === targetId) || {
+      chapter: 'CHAPTER',
+      kanji: '鳥居転換',
+      title: targetId.toUpperCase()
+    };
+
+    isTransitioning = true;
+
+    // Update emblem content
+    if (shutterKanji) shutterKanji.textContent = chapterMeta.kanji;
+    if (shutterBadge) shutterBadge.textContent = chapterMeta.chapter;
+    if (shutterTitle) shutterTitle.textContent = chapterMeta.title;
+
+    // Play chime sound
+    if (typeof window.playZenSound === 'function') {
+      window.playZenSound(480, 'sine', 0.6);
+    }
+
+    // Step 1: Activate shutter and slide panels closed
+    toriiShutter.classList.add('is-active', 'closing');
+
+    // Step 2: When shutters meet in the center (380ms), jump scroll position
+    setTimeout(() => {
+      const headerOffset = 70;
+      const elementPosition = targetEl.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'instant'
+      });
+
+      // Play second resonant harmonic chime upon arrival
+      if (typeof window.playZenSound === 'function') {
+        setTimeout(() => window.playZenSound(659.25, 'triangle', 0.8), 60);
+      }
+
+      // Step 3: Part shutters open outward
+      setTimeout(() => {
+        toriiShutter.classList.remove('closing');
+
+        // Step 4: Deactivate overlay once panels have parted
+        setTimeout(() => {
+          toriiShutter.classList.remove('is-active');
+          isTransitioning = false;
+        }, 420);
+      }, 140);
+    }, 380);
+  }
+
+  // Intercept all in-page navigation clicks with Torii Shutter transition
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.length > 1) {
+        const targetId = href.substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          triggerToriiTransition(targetId);
+        }
+      }
+    });
+  });
+
+  // Prev / Next Chapter Stepper buttons in bottom dock
+  if (prevChapterBtn) {
+    prevChapterBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const currentIndex = getCurrentChapterIndex();
+      const prevIndex = Math.max(0, currentIndex - 1);
+      triggerToriiTransition(CHAPTERS_LIST[prevIndex].id);
+    });
+  }
+
+  if (nextChapterBtn) {
+    nextChapterBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const currentIndex = getCurrentChapterIndex();
+      const nextIndex = Math.min(CHAPTERS_LIST.length - 1, currentIndex + 1);
+      triggerToriiTransition(CHAPTERS_LIST[nextIndex].id);
+    });
+  }
+
+  // Keyboard navigation shortcuts: PageDown/PageUp or J/K or Alt+ArrowDown/Up
+  window.addEventListener('keydown', (e) => {
+    if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
+
+    if (e.key === 'PageDown' || (e.key === 'ArrowDown' && e.altKey) || (e.key.toLowerCase() === 'j' && !e.ctrlKey && !e.metaKey && !e.altKey)) {
+      e.preventDefault();
+      const currentIndex = getCurrentChapterIndex();
+      const nextIndex = Math.min(CHAPTERS_LIST.length - 1, currentIndex + 1);
+      triggerToriiTransition(CHAPTERS_LIST[nextIndex].id);
+    } else if (e.key === 'PageUp' || (e.key === 'ArrowUp' && e.altKey) || (e.key.toLowerCase() === 'k' && !e.ctrlKey && !e.metaKey && !e.altKey)) {
+      e.preventDefault();
+      const currentIndex = getCurrentChapterIndex();
+      const prevIndex = Math.max(0, currentIndex - 1);
+      triggerToriiTransition(CHAPTERS_LIST[prevIndex].id);
+    }
+  });
+
+  // Expose transition function globally for testing
+  window.triggerToriiTransition = triggerToriiTransition;
 });
