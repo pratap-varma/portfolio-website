@@ -22,10 +22,14 @@ section {
   overflow: hidden;
   transition: var(--transition-smooth);
   box-shadow: var(--glass-shadow);
+  /* 120Hz GPU Compositing Layer */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 .bento-card:hover {
-  transform: translateY(-4px);
+  transform: translate3d(0, -4px, 0);
   border-color: var(--glass-border-hover);
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 126, 149, 0.15);
 }

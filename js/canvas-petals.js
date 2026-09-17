@@ -104,8 +104,6 @@
       ctx.bezierCurveTo(this.size / 2, -this.size / 2, this.size, 0, this.size / 2, this.size);
       ctx.bezierCurveTo(0, this.size / 2, -this.size / 2, 0, 0, 0);
       ctx.fillStyle = this.tint + this.opacity + ')';
-      ctx.shadowColor = 'rgba(255, 126, 149, 0.4)';
-      ctx.shadowBlur = 6;
       ctx.fill();
       ctx.restore();
     }
@@ -147,29 +145,30 @@
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fillStyle = this.color + this.baseAlpha + ')';
-      ctx.shadowColor = this.color + '0.8)';
-      ctx.shadowBlur = 8;
       ctx.fill();
     }
   }
 
-  // Initialize particles based on screen width
+  // Initialize particles tuned for 120Hz ProMotion framerate
   const isMobile = width < 768;
-  const petalCount = isMobile ? 24 : 50;
-  const nodeCount = isMobile ? 25 : 55;
+  const petalCount = isMobile ? 18 : 42;
+  const nodeCount = isMobile ? 20 : 45;
 
   const petals = Array.from({ length: petalCount }, () => new SakuraPetal());
   const nodes = Array.from({ length: nodeCount }, () => new NeuralNode());
 
   function connectNodes() {
-    const maxDist = 95;
+    const maxDist = isMobile ? 65 : 85;
+    const maxDistSq = maxDist * maxDist;
+
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const dx = nodes[i].x - nodes[j].x;
         const dy = nodes[i].y - nodes[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+        const distSq = dx * dx + dy * dy;
 
-        if (dist < maxDist) {
+        if (distSq < maxDistSq) {
+          const dist = Math.sqrt(distSq);
           const alpha = (1 - dist / maxDist) * 0.22;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -198,8 +197,28 @@
     }
   }
 
-  // Animation Loop
+  // 120Hz Visibility Gate: Pauses canvas when scrolled out of hero to preserve 100% GPU
+  let isCanvasActive = true;
+  let animFrameId = null;
+
+  const heroSection = document.getElementById('hero');
+  if (window.IntersectionObserver && heroSection) {
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const wasActive = isCanvasActive;
+        isCanvasActive = entry.isIntersecting;
+        if (!wasActive && isCanvasActive) {
+          animFrameId = requestAnimationFrame(animate);
+        }
+      });
+    }, { threshold: 0.05 });
+    heroObserver.observe(heroSection);
+  }
+
+  // Animation Loop (60Hz / 120Hz ProMotion Native Sync)
   function animate() {
+    if (!isCanvasActive) return;
+
     ctx.clearRect(0, 0, width, height);
 
     // 1. Draw neural network connections & nodes
@@ -215,8 +234,8 @@
       petal.draw();
     });
 
-    requestAnimationFrame(animate);
+    animFrameId = requestAnimationFrame(animate);
   }
 
-  animate();
+  animFrameId = requestAnimationFrame(animate);
 })();

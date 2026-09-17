@@ -149,14 +149,28 @@ html {
 body {
   min-height: 100vh;
   position: relative;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: var(--twilight-void);
+  /* Hardware-accelerated smooth scrolling optimization */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 120Hz Hardware-Accelerated Background Plane (Zero CPU Repaints on Scroll) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
   background-color: var(--twilight-void);
   background-image: 
     radial-gradient(ellipse at top right, rgba(60, 30, 72, 0.45) 0%, transparent 60%),
     radial-gradient(ellipse at center left, rgba(26, 22, 54, 0.5) 0%, transparent 60%),
     radial-gradient(ellipse at bottom right, rgba(0, 242, 254, 0.08) 0%, transparent 50%);
-  background-attachment: fixed;
-  line-height: 1.6;
-  overflow-x: hidden;
+  pointer-events: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 /* Custom Scrollbar */
