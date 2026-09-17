@@ -33,11 +33,16 @@
 
 [data-theme="light"] .landscape-sky {
   background: linear-gradient(180deg, 
-    #e8eaf6 0%, 
-    #f3e5f5 40%, 
-    #fce4ec 75%, 
-    #ede7f6 100%
+    #e0e7ff 0%, 
+    #ede9fe 25%, 
+    #fce7f3 55%, 
+    #ffe4e6 80%, 
+    #f8fafc 100%
   );
+}
+
+[data-theme="light"] .sky-glow {
+  background: radial-gradient(circle, rgba(251, 113, 133, 0.28) 0%, rgba(253, 186, 116, 0.18) 40%, transparent 70%);
 }
 
 /* Atmospheric Sun/Moon Dusk Glow */
@@ -195,6 +200,12 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+}
+
+[data-theme="light"] .hero-title .gradient-name {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 35%, #db2777 75%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-subhead {
@@ -355,4 +366,97 @@
 
 .terminal-val.green {
   color: var(--ai-emerald);
+}
+
+/* Light Mode Overrides for Terminal Card & Landscape Elements */
+[data-theme="light"] .hero-preview-card {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .terminal-prompt {
+  color: #0284c7;
+}
+
+[data-theme="light"] .terminal-val {
+  color: #1e293b;
+}
+
+[data-theme="light"] .terminal-val.accent {
+  color: #db2777;
+}
+
+[data-theme="light"] .terminal-val.green {
+  color: #059669;
+}
+
+[data-theme="light"] .terminal-badge {
+  color: #db2777;
+  background: rgba(219, 39, 119, 0.1);
+}
+
+/* Landscape SVG light mode softening */
+[data-theme="light"] .landscape-art svg path[fill="#090814"] {
+  fill: #e2e8f0;
+}
+
+[data-theme="light"] .landscape-art svg #pagoda-temple rect[fill="#1d1526"] {
+  fill: #f1f5f9;
+}
+
+[data-theme="light"] .landscape-art svg #pagoda-temple path[fill="#2d1b38"] {
+  fill: #e2e8f0;
+}
+
+[data-theme="light"] .landscape-art svg #pagoda-temple path[fill="#381d45"] {
+  fill: #cbd5e1;
+}
+
+[data-theme="light"] .landscape-art svg #stone-lantern polygon[fill="#1b172a"] {
+  fill: #cbd5e1;
+}
+
+[data-theme="light"] .landscape-art svg #stone-lantern rect[fill="#151221"] {
+  fill: #94a3b8;
+}
+
+[data-theme="light"] .landscape-art svg #stone-lantern polygon[fill="#2d223f"] {
+  fill: #e2e8f0;
+}
+
+[data-theme="light"] .landscape-hill-left {
+  fill: #cbd5e1 !important;
+}
+
+[data-theme="light"] .landscape-hill-right {
+  fill: #cbd5e1 !important;
+}
+
+[data-theme="light"] #mountFarGrad stop:first-child {
+  stop-color: #f1f5f9;
+}
+[data-theme="light"] #mountFarGrad stop:last-child {
+  stop-color: #e2e8f0;
+}
+
+[data-theme="light"] #mountNearGrad stop:first-child {
+  stop-color: #e2e8f0;
+}
+[data-theme="light"] #mountNearGrad stop:last-child {
+  stop-color: #cbd5e1;
+}
+
+[data-theme="light"] #waterGrad stop:first-child {
+  stop-color: #fce7f3;
+}
+[data-theme="light"] #waterGrad stop:nth-child(2) {
+  stop-color: #e0e7ff;
+}
+[data-theme="light"] #waterGrad stop:last-child {
+  stop-color: #f8fafc;
+}
+
+[data-theme="light"] .water-reflection {
+  opacity: 0.55;
 }

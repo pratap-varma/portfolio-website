@@ -60,22 +60,69 @@
   --transition-fast: all 0.2s ease;
 }
 
-/* Light Theme Variables */
+/* Light Theme Variables (Daylight Sakura Aesthetic) */
 [data-theme="light"] {
-  --twilight-void: #f5f6fa;
-  --twilight-deep: #ebedf5;
-  --twilight-violet: #ded9ed;
-  --twilight-mauve: #f3e5f5;
-  --surface-glass: rgba(255, 255, 255, 0.8);
-  --surface-glass-card: rgba(255, 255, 255, 0.7);
-  --surface-glass-hover: rgba(255, 255, 255, 0.95);
-  --glass-border: rgba(0, 0, 0, 0.08);
-  --glass-border-hover: rgba(236, 72, 153, 0.4);
-  --glass-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.08), 0 0 20px rgba(255, 126, 149, 0.1);
+  --twilight-void: #f8fafc;
+  --twilight-deep: #f1f5f9;
+  --twilight-violet: #e2e8f0;
+  --twilight-mauve: #fce7f3;
+  --twilight-rose: #db2777;
+  --twilight-rose-glow: rgba(219, 39, 119, 0.25);
+  
+  --lantern-gold: #d97706;
+  --lantern-amber: #b45309;
+  --lantern-glow: rgba(217, 119, 6, 0.3);
+
+  --ai-cyan: #0284c7;
+  --ai-cyan-glow: rgba(2, 132, 199, 0.25);
+  --ai-violet: #7c3aed;
+  --ai-emerald: #059669;
+  --ai-emerald-glow: rgba(5, 150, 105, 0.2);
+
+  --surface-glass: rgba(255, 255, 255, 0.9);
+  --surface-glass-card: rgba(255, 255, 255, 0.82);
+  --surface-glass-hover: #ffffff;
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-border-hover: rgba(219, 39, 119, 0.4);
+  --glass-border-cyan: rgba(2, 132, 199, 0.4);
+  --glass-blur: blur(20px);
+  --glass-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.06), 0 0 20px rgba(219, 39, 119, 0.08);
+
   --text-primary: #0f172a;
-  --text-secondary: #475569;
+  --text-secondary: #334155;
   --text-muted: #64748b;
-  --text-gradient: linear-gradient(135deg, #0f172a 0%, #334155 50%, #475569 100%);
+  --text-gradient: linear-gradient(135deg, #0f172a 0%, #312e81 50%, #db2777 100%);
+  --text-cyan-grad: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+}
+
+[data-theme="light"] body {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(ellipse at top right, rgba(252, 231, 243, 0.75) 0%, transparent 60%),
+    radial-gradient(ellipse at center left, rgba(226, 232, 240, 0.8) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(224, 242, 254, 0.6) 0%, transparent 50%);
+}
+
+[data-theme="light"] .btn-secondary {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 23, 42, 0.12);
+  color: #0f172a;
+}
+
+[data-theme="light"] .btn-secondary:hover {
+  background: #ffffff;
+  border-color: #db2777;
+  color: #db2777;
+}
+
+[data-theme="light"] .section-tag {
+  background: rgba(219, 39, 119, 0.08);
+  border-color: rgba(219, 39, 119, 0.25);
+  color: #db2777;
+}
+
+[data-theme="light"] .watermark-text {
+  color: rgba(15, 23, 42, 0.04);
 }
 
 /* ==========================================================================

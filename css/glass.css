@@ -113,8 +113,10 @@
 }
 
 [data-theme="light"] .nav-link:hover, [data-theme="light"] .nav-link.active {
-  color: var(--twilight-mauve);
-  background: rgba(255, 126, 149, 0.2);
+  color: #ffffff;
+  background: #db2777;
+  border: 1px solid #db2777;
+  box-shadow: 0 4px 14px rgba(219, 39, 119, 0.35);
 }
 
 /* Nav Actions (Sound, Theme, Mobile Toggle) */
@@ -223,6 +225,21 @@
   background: rgba(255, 126, 149, 0.15);
   color: #ffffff;
   border-color: rgba(255, 126, 149, 0.3);
+}
+
+[data-theme="light"] .mobile-drawer {
+  background: rgba(255, 255, 255, 0.98);
+  border-left: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .mobile-nav-link {
+  color: #334155;
+}
+
+[data-theme="light"] .mobile-nav-link:hover, [data-theme="light"] .mobile-nav-link.active {
+  background: rgba(219, 39, 119, 0.1);
+  color: #db2777;
+  border-color: rgba(219, 39, 119, 0.3);
 }
 
 /* Toast Notifications */

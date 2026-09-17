@@ -183,3 +183,14 @@
   align-items: center;
   gap: 12px;
 }
+
+[data-theme="light"] .modal-highlight-box {
+  background: rgba(219, 39, 119, 0.06);
+  border-left: 3px solid #db2777;
+  color: #334155;
+}
+
+[data-theme="light"] .modal-footer {
+  background: #f8fafc;
+  border-top-color: rgba(15, 23, 42, 0.08);
+}

@@ -631,3 +631,98 @@ section {
   color: var(--text-muted);
   font-size: 0.9rem;
 }
+
+/* ==========================================================================
+   LIGHT THEME (DAYLIGHT SAKURA) COMPONENT POLISH
+   ========================================================================== */
+[data-theme="light"] .bento-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 14px 30px -8px rgba(15, 23, 42, 0.05), 0 0 15px rgba(219, 39, 119, 0.05);
+}
+
+[data-theme="light"] .bento-card:hover {
+  border-color: rgba(219, 39, 119, 0.35);
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.1), 0 0 25px rgba(219, 39, 119, 0.12);
+}
+
+[data-theme="light"] .stat-item {
+  background: #f1f5f9;
+  border: 1px solid rgba(15, 23, 42, 0.07);
+}
+
+[data-theme="light"] .stat-number {
+  color: #db2777;
+}
+
+[data-theme="light"] .tech-tag {
+  background: #f1f5f9;
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  color: #1e293b;
+}
+
+[data-theme="light"] .tech-tag:hover {
+  background: rgba(219, 39, 119, 0.12);
+  border-color: rgba(219, 39, 119, 0.35);
+  color: #db2777;
+}
+
+[data-theme="light"] .filter-pill {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  color: #475569;
+}
+
+[data-theme="light"] .filter-pill:hover,
+[data-theme="light"] .filter-pill.active {
+  background: #db2777;
+  border-color: #db2777;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(219, 39, 119, 0.3);
+}
+
+[data-theme="light"] .project-name {
+  color: #0f172a;
+}
+
+[data-theme="light"] .project-tagline {
+  color: #0284c7;
+}
+
+[data-theme="light"] .project-num {
+  color: #db2777;
+}
+
+[data-theme="light"] .details-prompt-btn {
+  color: #db2777;
+}
+
+[data-theme="light"] .playground-box {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.06);
+}
+
+[data-theme="light"] .playground-terminal {
+  background: #0f172a;
+  border-color: #1e293b;
+}
+
+[data-theme="light"] .now-item {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .contact-card-main {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .timeline-org {
+  color: #0284c7;
+}
+
+[data-theme="light"] .cert-issuer {
+  color: #db2777;
+}
