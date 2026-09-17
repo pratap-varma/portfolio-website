@@ -493,20 +493,143 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Keyboard navigation shortcuts: PageDown/PageUp, J/K, Alt+ArrowDown/Up
+  // Kinetic Scroll & Gesture Navigation Engine:
+  // Triggers the bespoke cinematic transition when scrolling down/up between chapters
+  let wheelCooldown = false;
+  let wheelAccumulator = 0;
+  const WHEEL_THRESHOLD = 35;
+
+  window.addEventListener('wheel', (e) => {
+    // If transition in flight, suppress wheel to prevent momentum bleed
+    if (isPageTransitioning) {
+      e.preventDefault();
+      return;
+    }
+
+    // Ignore if scrolling inside scrollable interactive widgets
+    if (e.target.closest('.interactive-terminal-content, .playground-chat-log, textarea, input, select')) {
+      return;
+    }
+
+    if (wheelCooldown) {
+      e.preventDefault();
+      return;
+    }
+
+    wheelAccumulator += e.deltaY;
+
+    if (Math.abs(wheelAccumulator) < WHEEL_THRESHOLD) {
+      return;
+    }
+
+    const direction = wheelAccumulator > 0 ? 1 : -1;
+    wheelAccumulator = 0;
+
+    const currentIdx = getCurrentSectionIndex();
+    const currentEl = document.getElementById(CHAPTERS_LIST[currentIdx]?.id);
+
+    if (direction === 1) {
+      // Scrolling DOWN
+      if (currentIdx >= CHAPTERS_LIST.length - 1) return; // At last chapter
+
+      // If current section is taller than screen and user hasn't reached its bottom yet,
+      // allow natural reading scroll through the section
+      if (currentEl) {
+        const rect = currentEl.getBoundingClientRect();
+        if (rect.bottom > (window.innerHeight + 40)) {
+          return;
+        }
+      }
+
+      e.preventDefault();
+      wheelCooldown = true;
+      navigateToSection(CHAPTERS_LIST[currentIdx + 1].id);
+      setTimeout(() => { wheelCooldown = false; }, 650);
+    } else {
+      // Scrolling UP
+      if (currentIdx <= 0) return; // At first chapter
+
+      // If user hasn't reached the top of current section yet, allow reading scroll
+      if (currentEl) {
+        const rect = currentEl.getBoundingClientRect();
+        if (rect.top < -40) {
+          return;
+        }
+      }
+
+      e.preventDefault();
+      wheelCooldown = true;
+      navigateToSection(CHAPTERS_LIST[currentIdx - 1].id);
+      setTimeout(() => { wheelCooldown = false; }, 650);
+    }
+  }, { passive: false });
+
+  // Touch Swipe Navigation for mobile & tablet screens
+  let touchStartY = 0;
+  let touchStartX = 0;
+  let touchCooldown = false;
+
+  window.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      touchStartY = e.touches[0].clientY;
+      touchStartX = e.touches[0].clientX;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchend', (e) => {
+    if (isPageTransitioning || touchCooldown) return;
+    if (e.changedTouches.length === 1) {
+      const deltaY = touchStartY - e.changedTouches[0].clientY;
+      const deltaX = touchStartX - e.changedTouches[0].clientX;
+
+      // Ensure vertical gesture is dominant and intentional (> 45px)
+      if (Math.abs(deltaY) > 45 && Math.abs(deltaY) > Math.abs(deltaX) * 1.3) {
+        const currentIdx = getCurrentSectionIndex();
+        const currentEl = document.getElementById(CHAPTERS_LIST[currentIdx]?.id);
+
+        if (deltaY > 0) {
+          // Swipe up = scroll down
+          if (currentIdx >= CHAPTERS_LIST.length - 1) return;
+          if (currentEl) {
+            const rect = currentEl.getBoundingClientRect();
+            if (rect.bottom > (window.innerHeight + 40)) return;
+          }
+          touchCooldown = true;
+          navigateToSection(CHAPTERS_LIST[currentIdx + 1].id);
+          setTimeout(() => { touchCooldown = false; }, 650);
+        } else {
+          // Swipe down = scroll up
+          if (currentIdx <= 0) return;
+          if (currentEl) {
+            const rect = currentEl.getBoundingClientRect();
+            if (rect.top < -40) return;
+          }
+          touchCooldown = true;
+          navigateToSection(CHAPTERS_LIST[currentIdx - 1].id);
+          setTimeout(() => { touchCooldown = false; }, 650);
+        }
+      }
+    }
+  }, { passive: true });
+
+  // Keyboard navigation shortcuts: ArrowDown, ArrowUp, PageDown, PageUp, Space, J/K
   window.addEventListener('keydown', (e) => {
     if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
 
-    if (e.key === 'PageDown' || (e.key === 'ArrowDown' && e.altKey) || (e.key.toLowerCase() === 'j' && !e.ctrlKey && !e.metaKey && !e.altKey)) {
+    if (e.key === 'PageDown' || e.key === 'ArrowDown' || e.key === ' ' || (e.key.toLowerCase() === 'j' && !e.ctrlKey && !e.metaKey)) {
       e.preventDefault();
       const currentIdx = getCurrentSectionIndex();
       const nextIdx = Math.min(CHAPTERS_LIST.length - 1, currentIdx + 1);
-      navigateToSection(CHAPTERS_LIST[nextIdx].id);
-    } else if (e.key === 'PageUp' || (e.key === 'ArrowUp' && e.altKey) || (e.key.toLowerCase() === 'k' && !e.ctrlKey && !e.metaKey && !e.altKey)) {
+      if (nextIdx !== currentIdx) {
+        navigateToSection(CHAPTERS_LIST[nextIdx].id);
+      }
+    } else if (e.key === 'PageUp' || e.key === 'ArrowUp' || (e.key.toLowerCase() === 'k' && !e.ctrlKey && !e.metaKey)) {
       e.preventDefault();
       const currentIdx = getCurrentSectionIndex();
       const prevIdx = Math.max(0, currentIdx - 1);
-      navigateToSection(CHAPTERS_LIST[prevIdx].id);
+      if (prevIdx !== currentIdx) {
+        navigateToSection(CHAPTERS_LIST[prevIdx].id);
+      }
     }
   });
 
