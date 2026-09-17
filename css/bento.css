@@ -625,7 +625,7 @@ section {
 
 /* Footer */
 .site-footer {
-  padding: 40px 0;
+  padding: 40px 0 100px;
   border-top: 1px solid var(--glass-border);
   text-align: center;
   color: var(--text-muted);
