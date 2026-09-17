@@ -1103,6 +1103,28 @@
     </div>
   </section>
 
+  <!-- Transition Style Switcher & Chapter HUD -->
+  <aside class="page-hud-container" aria-label="Page Chapter and Animation Mode">
+    <!-- Quick Mode Toggle between Option 1 (Portal Sweep) & Option 3 (Torii Shutter) -->
+    <div class="transition-mode-bar">
+      <span class="mode-label">ANIMATION:</span>
+      <button class="mode-btn active" id="mode-opt1-btn" title="Option 1: Fast Cinematic Energy Portal Sweep & Depth Focus">
+        <span>✦ Energy Sweep (Opt 1)</span>
+      </button>
+      <button class="mode-btn" id="mode-opt3-btn" title="Option 3: Japanese Cyber-Torii Shutter Gates">
+        <span>⛩️ Torii Shutter (Opt 3)</span>
+      </button>
+    </div>
+
+    <!-- Active Chapter HUD Pill -->
+    <div class="chapter-hud-pill" id="chapter-hud-pill">
+      <span class="hud-kanji" id="hud-kanji">自己紹介</span>
+      <span class="hud-divider">|</span>
+      <span class="hud-chapter" id="hud-chapter">CH. 01</span>
+      <span class="hud-title" id="hud-title">Profile & Philosophy</span>
+    </div>
+  </aside>
+
   <!-- Floating Bottom Glass Navigation Dock -->
   <nav class="floating-bottom-dock" aria-label="Main Navigation">
     <button class="dock-stepper-btn" id="prev-chapter-btn" aria-label="Previous Page" title="Previous Page (ArrowUp / K)">
@@ -1188,6 +1210,25 @@
         </div>
         <button class="btn btn-secondary" id="modal-dismiss-btn">Dismiss</button>
       </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       OPTION 1: CINEMATIC ENERGY PORTAL SWEEP OVERLAY
+       ========================================== -->
+  <div class="energy-portal-overlay" id="energy-portal" aria-hidden="true">
+    <div class="energy-backdrop"></div>
+    <div class="energy-light-streak"></div>
+    <div class="energy-card">
+      <div class="energy-laser-line"></div>
+      <div class="energy-kanji" id="energy-kanji">技術兵器</div>
+      <div class="energy-meta">
+        <span class="energy-badge" id="energy-badge">CHAPTER 02</span>
+        <span class="energy-dot"></span>
+        <span class="energy-status">TELEPORTING</span>
+      </div>
+      <h2 class="energy-title" id="energy-title">TECHNICAL ARSENAL</h2>
+      <div class="energy-progress-bar"><div class="energy-progress-fill"></div></div>
     </div>
   </div>
 

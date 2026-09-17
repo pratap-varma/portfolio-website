@@ -288,15 +288,8 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements.forEach(el => revealObserver.observe(el));
 
   // ==========================================
-  // 8. Japanese Cyber-Torii Shutter Transition (Option 3 Demo)
+  // 8. Page Transitions: Option 1 (Energy Sweep) & Option 3 (Torii Shutter)
   // ==========================================
-  const toriiShutter = document.getElementById('torii-shutter');
-  const shutterKanji = document.getElementById('shutter-kanji');
-  const shutterBadge = document.getElementById('shutter-badge');
-  const shutterTitle = document.getElementById('shutter-title');
-  const prevChapterBtn = document.getElementById('prev-chapter-btn');
-  const nextChapterBtn = document.getElementById('next-chapter-btn');
-
   const CHAPTERS_LIST = [
     { id: 'hero', chapter: 'CHAPTER 00', kanji: '人工知能', title: 'The Twilight Sanctuary' },
     { id: 'about', chapter: 'CHAPTER 01', kanji: '自己紹介', title: 'Profile & Philosophy' },
@@ -310,7 +303,67 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 'contact', chapter: 'CHAPTER 09', kanji: '接続連絡', title: 'Currently Building & Connect' }
   ];
 
+  // Animation Mode State ('opt1' = Energy Sweep, 'opt3' = Torii Shutter)
+  let currentAnimationMode = localStorage.getItem('pratap_anim_mode') || 'opt1';
   let isTransitioning = false;
+
+  // DOM Elements - Mode Switcher & HUD
+  const modeOpt1Btn = document.getElementById('mode-opt1-btn');
+  const modeOpt3Btn = document.getElementById('mode-opt3-btn');
+  const hudKanji = document.getElementById('hud-kanji');
+  const hudChapter = document.getElementById('hud-chapter');
+  const hudTitle = document.getElementById('hud-title');
+  const prevChapterBtn = document.getElementById('prev-chapter-btn');
+  const nextChapterBtn = document.getElementById('next-chapter-btn');
+
+  // DOM Elements - Option 1 (Energy Portal)
+  const energyPortal = document.getElementById('energy-portal');
+  const energyKanji = document.getElementById('energy-kanji');
+  const energyBadge = document.getElementById('energy-badge');
+  const energyTitle = document.getElementById('energy-title');
+
+  // DOM Elements - Option 3 (Torii Shutter)
+  const toriiShutter = document.getElementById('torii-shutter');
+  const shutterKanji = document.getElementById('shutter-kanji');
+  const shutterBadge = document.getElementById('shutter-badge');
+  const shutterTitle = document.getElementById('shutter-title');
+
+  function setAnimationMode(mode) {
+    currentAnimationMode = mode;
+    localStorage.setItem('pratap_anim_mode', mode);
+    if (modeOpt1Btn && modeOpt3Btn) {
+      if (mode === 'opt1') {
+        modeOpt1Btn.classList.add('active');
+        modeOpt3Btn.classList.remove('active');
+      } else {
+        modeOpt3Btn.classList.add('active');
+        modeOpt1Btn.classList.remove('active');
+      }
+    }
+  }
+
+  // Initialize mode UI
+  setAnimationMode(currentAnimationMode);
+
+  if (modeOpt1Btn) {
+    modeOpt1Btn.addEventListener('click', () => {
+      setAnimationMode('opt1');
+      if (typeof window.playZenSound === 'function') window.playZenSound(660, 'sine', 0.4);
+    });
+  }
+
+  if (modeOpt3Btn) {
+    modeOpt3Btn.addEventListener('click', () => {
+      setAnimationMode('opt3');
+      if (typeof window.playZenSound === 'function') window.playZenSound(440, 'triangle', 0.5);
+    });
+  }
+
+  function updateHUD(chapterMeta) {
+    if (hudKanji) hudKanji.textContent = chapterMeta.kanji;
+    if (hudChapter) hudChapter.textContent = chapterMeta.chapter.replace('CHAPTER', 'CH.');
+    if (hudTitle) hudTitle.textContent = chapterMeta.title;
+  }
 
   function getCurrentChapterIndex() {
     const scrollMiddle = window.scrollY + window.innerHeight * 0.35;
@@ -323,33 +376,34 @@ document.addEventListener('DOMContentLoaded', () => {
     return 0;
   }
 
-  function triggerToriiTransition(targetId) {
-    if (isTransitioning || !toriiShutter) return;
-    const targetEl = document.getElementById(targetId);
-    if (!targetEl) return;
+  // Sync HUD on passive scroll
+  window.addEventListener('scroll', () => {
+    if (!isTransitioning) {
+      const currentIdx = getCurrentChapterIndex();
+      updateHUD(CHAPTERS_LIST[currentIdx]);
+    }
+  });
 
-    const chapterMeta = CHAPTERS_LIST.find(c => c.id === targetId) || {
-      chapter: 'CHAPTER',
-      kanji: '鳥居転換',
-      title: targetId.toUpperCase()
-    };
-
+  // OPTION 1: Fast Cinematic Energy Portal Sweep & 3D Depth Bloom
+  function triggerOption1Transition(targetId, targetEl, chapterMeta) {
+    if (!energyPortal) return;
     isTransitioning = true;
 
-    // Update emblem content
-    if (shutterKanji) shutterKanji.textContent = chapterMeta.kanji;
-    if (shutterBadge) shutterBadge.textContent = chapterMeta.chapter;
-    if (shutterTitle) shutterTitle.textContent = chapterMeta.title;
+    // Update Card Information
+    if (energyKanji) energyKanji.textContent = chapterMeta.kanji;
+    if (energyBadge) energyBadge.textContent = chapterMeta.chapter;
+    if (energyTitle) energyTitle.textContent = chapterMeta.title;
+    updateHUD(chapterMeta);
 
-    // Play chime sound
+    // Audio chime
     if (typeof window.playZenSound === 'function') {
-      window.playZenSound(480, 'sine', 0.6);
+      window.playZenSound(587.33, 'triangle', 0.45);
     }
 
-    // Step 1: Activate shutter and slide panels closed
-    toriiShutter.classList.add('is-active', 'closing');
+    // Activate Energy Sweep
+    energyPortal.classList.add('is-active', 'sweeping');
 
-    // Step 2: When shutters meet in the center (380ms), jump scroll position
+    // Midway through the warp sweep (280ms), teleport scroll & bloom
     setTimeout(() => {
       const headerOffset = 70;
       const elementPosition = targetEl.getBoundingClientRect().top;
@@ -360,7 +414,62 @@ document.addEventListener('DOMContentLoaded', () => {
         behavior: 'instant'
       });
 
-      // Play second resonant harmonic chime upon arrival
+      // Apply 3D depth bloom to target section
+      targetEl.classList.remove('section-depth-bloom');
+      void targetEl.offsetWidth; // force reflow
+      targetEl.classList.add('section-depth-bloom');
+
+      setTimeout(() => {
+        targetEl.classList.remove('section-depth-bloom');
+      }, 750);
+
+      // Play arrival harmonic chime
+      if (typeof window.playZenSound === 'function') {
+        window.playZenSound(784, 'sine', 0.6);
+      }
+
+      // Exit Energy Sweep
+      setTimeout(() => {
+        energyPortal.classList.remove('sweeping');
+        setTimeout(() => {
+          energyPortal.classList.remove('is-active');
+          isTransitioning = false;
+        }, 180);
+      }, 140);
+    }, 280);
+  }
+
+  // OPTION 3: Japanese Cyber-Torii Shutter Gates
+  function triggerOption3Transition(targetId, targetEl, chapterMeta) {
+    if (!toriiShutter) return;
+    isTransitioning = true;
+
+    // Update Shutter Emblem
+    if (shutterKanji) shutterKanji.textContent = chapterMeta.kanji;
+    if (shutterBadge) shutterBadge.textContent = chapterMeta.chapter;
+    if (shutterTitle) shutterTitle.textContent = chapterMeta.title;
+    updateHUD(chapterMeta);
+
+    // Audio chime
+    if (typeof window.playZenSound === 'function') {
+      window.playZenSound(440, 'sine', 0.6);
+    }
+
+    // Step 1: Slide panels closed
+    toriiShutter.classList.add('is-active', 'closing');
+
+    // Step 2: Jump scroll position when shutters meet in center (380ms)
+    setTimeout(() => {
+      const headerOffset = 70;
+      const elementPosition = targetEl.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'instant'
+      });
+
+      // Play arrival chord
       if (typeof window.playZenSound === 'function') {
         setTimeout(() => window.playZenSound(659.25, 'triangle', 0.8), 60);
       }
@@ -368,8 +477,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // Step 3: Part shutters open outward
       setTimeout(() => {
         toriiShutter.classList.remove('closing');
-
-        // Step 4: Deactivate overlay once panels have parted
         setTimeout(() => {
           toriiShutter.classList.remove('is-active');
           isTransitioning = false;
@@ -378,7 +485,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 380);
   }
 
-  // Intercept all in-page navigation clicks with Torii Shutter transition
+  // Unified Chapter Transition Router
+  function navigateToChapter(targetId) {
+    if (isTransitioning) return;
+    const targetEl = document.getElementById(targetId);
+    if (!targetEl) return;
+
+    const chapterMeta = CHAPTERS_LIST.find(c => c.id === targetId) || {
+      chapter: 'CHAPTER',
+      kanji: '転換',
+      title: targetId.toUpperCase()
+    };
+
+    if (currentAnimationMode === 'opt3') {
+      triggerOption3Transition(targetId, targetEl, chapterMeta);
+    } else {
+      triggerOption1Transition(targetId, targetEl, chapterMeta);
+    }
+  }
+
+  // Intercept all in-page navigation clicks
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
@@ -387,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetEl = document.getElementById(targetId);
         if (targetEl) {
           e.preventDefault();
-          triggerToriiTransition(targetId);
+          navigateToChapter(targetId);
         }
       }
     });
@@ -399,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const currentIndex = getCurrentChapterIndex();
       const prevIndex = Math.max(0, currentIndex - 1);
-      triggerToriiTransition(CHAPTERS_LIST[prevIndex].id);
+      navigateToChapter(CHAPTERS_LIST[prevIndex].id);
     });
   }
 
@@ -408,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const currentIndex = getCurrentChapterIndex();
       const nextIndex = Math.min(CHAPTERS_LIST.length - 1, currentIndex + 1);
-      triggerToriiTransition(CHAPTERS_LIST[nextIndex].id);
+      navigateToChapter(CHAPTERS_LIST[nextIndex].id);
     });
   }
 
@@ -420,15 +546,16 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const currentIndex = getCurrentChapterIndex();
       const nextIndex = Math.min(CHAPTERS_LIST.length - 1, currentIndex + 1);
-      triggerToriiTransition(CHAPTERS_LIST[nextIndex].id);
+      navigateToChapter(CHAPTERS_LIST[nextIndex].id);
     } else if (e.key === 'PageUp' || (e.key === 'ArrowUp' && e.altKey) || (e.key.toLowerCase() === 'k' && !e.ctrlKey && !e.metaKey && !e.altKey)) {
       e.preventDefault();
       const currentIndex = getCurrentChapterIndex();
       const prevIndex = Math.max(0, currentIndex - 1);
-      triggerToriiTransition(CHAPTERS_LIST[prevIndex].id);
+      navigateToChapter(CHAPTERS_LIST[prevIndex].id);
     }
   });
 
-  // Expose transition function globally for testing
-  window.triggerToriiTransition = triggerToriiTransition;
+  // Expose transition navigation globally for testing
+  window.navigateToChapter = navigateToChapter;
+  window.setAnimationMode = setAnimationMode;
 });
