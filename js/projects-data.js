@@ -129,45 +129,5 @@ const PROJECTS_DATA = [
     tech: ["Python", "AI", "Data Analytics", "FastAPI", "Automation"],
     github: "https://github.com/pratap-varma",
     live: "#"
-  },
-  {
-    id: "attendance",
-    number: "07",
-    name: "Automated Attendance Portal",
-    tagline: "Dynamic QR Code Campus Attendance Management",
-    category: "fullstack",
-    status: "Prototype",
-    shortDesc: "A secure digital attendance platform with dynamic rotating QR codes, geolocation validation, and institutional analytics dashboards.",
-    problem: "Manual attendance roll-calls waste valuable lecture hours and are prone to proxy attendance.",
-    solution: "Built an anti-proxy attendance portal utilizing dynamic cryptographic QR codes that rotate every 10 seconds, verified against real-time session timestamps.",
-    features: [
-      "Dynamic rotating QR code generation for live classrooms",
-      "Instant student scan verification and check-in logging",
-      "Faculty and administrator management dashboards",
-      "Analytical attendance reports and exportable logs"
-    ],
-    tech: ["JavaScript", "HTML/CSS", "Python", "QR Cryptography", "Analytics"],
-    github: "https://github.com/pratap-varma",
-    live: "#"
-  },
-  {
-    id: "extensions",
-    number: "08",
-    name: "Productivity Chrome Extensions",
-    tagline: "Custom Browser Workflow Automation Suite",
-    category: "fullstack",
-    status: "Tools Suite",
-    shortDesc: "Suite of lightweight, custom browser extensions designed to automate repetitive developer workflows, scrape technical data, and optimize browsing productivity.",
-    problem: "Repeated manual copying, web form filling, and context switching across browser tabs slows down everyday technical research.",
-    solution: "Engineered focused Manifest V3 Chrome extensions with clean popup interfaces, hotkey shortcuts, and background service workers to automate frequent browser actions.",
-    features: [
-      "One-click multi-tab extraction and summary clipping",
-      "Keyboard-first rapid task automation shortcuts",
-      "Zero telemetry, privacy-preserving local storage",
-      "Engineered on native web standards (Manifest V3)"
-    ],
-    tech: ["JavaScript", "HTML5", "CSS3", "Chrome Extension API"],
-    github: "https://github.com/pratap-varma",
-    live: "#"
   }
 ];
