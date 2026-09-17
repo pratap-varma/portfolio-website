@@ -1217,7 +1217,8 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: var(--font-mono);
-  font-size: 1.6rem;
+  font-size: clamp(0.95rem, 4vw, 1.6rem);
+  white-space: nowrap;
   font-weight: 800;
   color: var(--ai-cyan);
   text-shadow: -2px 0 #ff0055, 2px 0 #00ffff, 0 0 20px var(--ai-cyan);
@@ -1255,8 +1256,8 @@ button {
 
 .page-transition-stage.fx-projects .deck-warp-panel {
   position: absolute;
-  width: 420px;
-  height: 280px;
+  width: min(420px, 86vw);
+  height: min(280px, 58vw);
   border-radius: 20px;
   border: 1.5px solid rgba(0, 242, 254, 0.6);
   background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(142, 45, 226, 0.2));

@@ -68,16 +68,68 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div class="mobile-drawer" id="mobile-drawer">
-    <a href="#about" class="mobile-nav-link">About Me</a>
-    <a href="#arsenal" class="mobile-nav-link">Technical Arsenal</a>
-    <a href="#playground" class="mobile-nav-link">AI Agent Sandbox</a>
-    <a href="#projects" class="mobile-nav-link">Featured Projects</a>
-    <a href="#experience" class="mobile-nav-link">Experience & Hackathons</a>
-    <a href="#certifications" class="mobile-nav-link">Certifications</a>
-    <a href="#beyond" class="mobile-nav-link">Beyond Code</a>
-    <a href="#contact" class="mobile-nav-link">Contact & Connect</a>
+  <!-- Mobile Drawer Backdrop Scrim -->
+  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" aria-hidden="true"></div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo">
+        <div class="brand-emblem" style="width: 32px; height: 32px; font-size: 0.9rem;">PV</div>
+        <span style="font-size: 1.1rem; font-weight: 800;">PORTFOLIO</span>
+      </div>
+      <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close Mobile Navigation">✕</button>
+    </div>
+    
+    <div class="mobile-drawer-links">
+      <a href="#hero" class="mobile-nav-link" data-chapter="hero">
+        <span class="m-num">01</span>
+        <span class="m-name">Arrival · Hero</span>
+      </a>
+      <a href="#about" class="mobile-nav-link" data-chapter="about">
+        <span class="m-num">02</span>
+        <span class="m-name">Zen Philosophy & Identity</span>
+      </a>
+      <a href="#arsenal" class="mobile-nav-link" data-chapter="arsenal">
+        <span class="m-num">03</span>
+        <span class="m-name">Technical Arsenal</span>
+      </a>
+      <a href="#playground" class="mobile-nav-link" data-chapter="playground">
+        <span class="m-num">04</span>
+        <span class="m-name">Gemini AI Agent Sandbox</span>
+      </a>
+      <a href="#projects" class="mobile-nav-link" data-chapter="projects">
+        <span class="m-num">05</span>
+        <span class="m-name">Featured Projects</span>
+      </a>
+      <a href="#experience" class="mobile-nav-link" data-chapter="experience">
+        <span class="m-num">06</span>
+        <span class="m-name">Timeline & Hackathons</span>
+      </a>
+      <a href="#certifications" class="mobile-nav-link" data-chapter="certifications">
+        <span class="m-num">07</span>
+        <span class="m-name">Credentials Vault</span>
+      </a>
+      <a href="#approach" class="mobile-nav-link" data-chapter="approach">
+        <span class="m-num">08</span>
+        <span class="m-name">Engineering Lifecycle</span>
+      </a>
+      <a href="#beyond" class="mobile-nav-link" data-chapter="beyond">
+        <span class="m-num">09</span>
+        <span class="m-name">Beyond Code</span>
+      </a>
+      <a href="#contact" class="mobile-nav-link" data-chapter="contact">
+        <span class="m-num">10</span>
+        <span class="m-name">Connect & Hire</span>
+      </a>
+    </div>
+
+    <div class="mobile-drawer-footer">
+      <a href="#contact" class="btn btn-primary mobile-drawer-cta">
+        <span>Let's Connect</span>
+        <span>⛩️</span>
+      </a>
+    </div>
   </div>
 
   <!-- Hero Section with Kamui-Inspired Twilight Landscape -->
@@ -1143,6 +1195,16 @@
     <button class="dock-stepper-btn" id="prev-chapter-btn" aria-label="Previous Page" title="Previous Page (ArrowUp / K)">
       <span>▲</span>
     </button>
+
+    <!-- Mobile Compact Chapter Pill (Shown on Screens <= 768px) -->
+    <button class="mobile-dock-active-btn" id="mobile-dock-active-btn" aria-label="Open Chapters Menu">
+      <span class="mobile-dock-dot"></span>
+      <span class="mobile-dock-name" id="mobile-dock-name">Arrival</span>
+      <span class="mobile-dock-num" id="mobile-dock-num">01/10</span>
+      <span class="mobile-dock-icon">☰</span>
+    </button>
+
+    <!-- Desktop Navigation Links (Shown on Screens > 768px) -->
     <ul class="nav-links">
       <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
       <li class="nav-item"><a href="#arsenal" class="nav-link">Arsenal</a></li>
@@ -1153,6 +1215,7 @@
       <li class="nav-item"><a href="#beyond" class="nav-link">Beyond Code</a></li>
       <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
+
     <button class="dock-stepper-btn" id="next-chapter-btn" aria-label="Next Page" title="Next Page (ArrowDown / J)">
       <span>▼</span>
     </button>

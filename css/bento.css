@@ -726,3 +726,203 @@ section {
 [data-theme="light"] .cert-issuer {
   color: #db2777;
 }
+
+/* ==========================================================================
+   MOBILE SECTION & BENTO RESPONSIVENESS (Screens <= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  section {
+    padding: 55px 0 75px;
+  }
+
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section-header {
+    margin-bottom: 28px;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 5.5vw, 2.3rem);
+    margin-bottom: 8px;
+  }
+
+  .section-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    padding: 0 4px;
+  }
+
+  .watermark-text {
+    font-size: clamp(2.8rem, 12vw, 4.8rem);
+    opacity: 0.03;
+  }
+
+  .bento-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .bento-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  .bento-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .stats-counter-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .stat-item {
+    padding: 12px 6px;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+  }
+
+  .arsenal-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .tech-tag {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+  }
+
+  .playground-box {
+    padding: 16px 12px;
+    margin-top: 16px;
+  }
+
+  .playground-controls {
+    gap: 6px;
+  }
+
+  .prompt-pill-btn {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+  }
+
+  .playground-terminal {
+    padding: 12px;
+    font-size: 0.8rem;
+    min-height: 150px;
+    max-height: 240px;
+  }
+
+  .projects-filter-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 4px 16px 12px;
+    margin: 0 -16px 20px -16px;
+  }
+
+  .projects-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-pill {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .project-card {
+    padding: 18px 16px;
+  }
+
+  .project-name {
+    font-size: 1.3rem;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .timeline-meta {
+    font-size: 0.8rem;
+  }
+
+  .timeline-role {
+    font-size: 1.15rem;
+  }
+
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cert-card {
+    padding: 18px 14px;
+  }
+
+  .approach-pipeline {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .approach-step {
+    padding: 20px 14px;
+  }
+
+  .beyond-code-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .beyond-card {
+    padding: 20px 14px;
+  }
+
+  .now-building-strip {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .contact-card-main {
+    padding: 24px 16px;
+  }
+
+  .contact-buttons-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .contact-buttons-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

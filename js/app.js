@@ -40,17 +40,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  if (mobileToggleBtn && mobileDrawer) {
-    mobileToggleBtn.addEventListener('click', () => {
-      mobileDrawer.classList.toggle('open');
-    });
+  const mobileDrawerBackdrop = document.getElementById('mobile-drawer-backdrop');
+  const mobileDrawerClose = document.getElementById('mobile-drawer-close');
+  const mobileDockChapterBtn = document.getElementById('mobile-dock-active-btn');
 
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileDrawer.classList.remove('open');
-      });
+  function openMobileDrawer() {
+    if (mobileDrawer) mobileDrawer.classList.add('open');
+    if (mobileDrawerBackdrop) mobileDrawerBackdrop.classList.add('active');
+  }
+
+  function closeMobileDrawer() {
+    if (mobileDrawer) mobileDrawer.classList.remove('open');
+    if (mobileDrawerBackdrop) mobileDrawerBackdrop.classList.remove('active');
+  }
+
+  if (mobileToggleBtn) {
+    mobileToggleBtn.addEventListener('click', () => {
+      if (mobileDrawer && mobileDrawer.classList.contains('open')) {
+        closeMobileDrawer();
+      } else {
+        openMobileDrawer();
+      }
     });
   }
+
+  if (mobileDrawerClose) {
+    mobileDrawerClose.addEventListener('click', closeMobileDrawer);
+  }
+
+  if (mobileDrawerBackdrop) {
+    mobileDrawerBackdrop.addEventListener('click', closeMobileDrawer);
+  }
+
+  if (mobileDockChapterBtn) {
+    mobileDockChapterBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openMobileDrawer();
+    });
+  }
+
+  document.querySelectorAll('.mobile-nav-link, .mobile-drawer-cta').forEach(link => {
+    link.addEventListener('click', closeMobileDrawer);
+  });
 
   // Active Nav Link Spy
   const sections = document.querySelectorAll('section[id]');
@@ -370,6 +401,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Also update mobile drawer links active state
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      if (link.getAttribute('href') === `#${activeId}`) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
     const chapterIdx = CHAPTERS_LIST.findIndex(c => c.id === activeId);
     if (chapterIdx !== -1) {
       if (headerChapterNum) {
@@ -377,6 +417,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (headerChapterTitle) {
         headerChapterTitle.textContent = CHAPTERS_LIST[chapterIdx].title;
+      }
+      const mobileDockName = document.getElementById('mobile-dock-name');
+      const mobileDockNum = document.getElementById('mobile-dock-num');
+      if (mobileDockName) {
+        const rawTitle = CHAPTERS_LIST[chapterIdx].title;
+        const cleanName = rawTitle.includes('·') ? rawTitle.split('·')[0].trim() : rawTitle.split('&')[0].trim();
+        mobileDockName.textContent = cleanName;
+      }
+      if (mobileDockNum) {
+        mobileDockNum.textContent = `${String(chapterIdx + 1).padStart(2, '0')}/10`;
       }
     }
   }

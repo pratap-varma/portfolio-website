@@ -460,3 +460,88 @@
 [data-theme="light"] .water-reflection {
   opacity: 0.55;
 }
+
+/* ==========================================================================
+   MOBILE HERO OPTIMIZATIONS (Smartphones & Small Tablets)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-landscape-container {
+    padding-top: 75px;
+    min-height: auto;
+    padding-bottom: 60px;
+  }
+
+  .hero-content-wrapper {
+    padding: 20px 16px 40px;
+    gap: 28px;
+  }
+
+  .landscape-art {
+    opacity: 0.35;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    margin-bottom: 12px;
+  }
+
+  .hero-subhead {
+    font-size: 0.92rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .hero-bio {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 22px;
+    padding: 0 4px;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    padding: 13px 20px;
+    font-size: 0.92rem;
+    justify-content: center;
+  }
+
+  .hero-social-strip {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding-top: 16px;
+  }
+
+  .social-pill {
+    padding: 7px 14px;
+    font-size: 0.82rem;
+  }
+
+  .hero-preview-card {
+    padding: 18px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .terminal-body {
+    font-size: 0.8rem;
+    line-height: 1.7;
+  }
+
+  .hero-watermark-kanji {
+    font-size: clamp(4.5rem, 18vw, 7rem);
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.05;
+  }
+}
