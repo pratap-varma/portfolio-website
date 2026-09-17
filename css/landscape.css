@@ -1,0 +1,358 @@
+/* ==========================================================================
+   TWILIGHT LANDSCAPE & ATMOSPHERIC ARTWORK (KAMUI AESTHETIC)
+   Layered mountains, glowing pagoda temple, wooden arched bridge, warm lanterns
+   ========================================================================== */
+
+.hero-landscape-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: var(--nav-height);
+}
+
+/* Background Atmosphere & Sky Gradient */
+.landscape-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, 
+    #0c0d1a 0%, 
+    #181432 30%, 
+    #2f1b40 60%, 
+    #4a214d 80%, 
+    #131024 100%
+  );
+  z-index: 1;
+}
+
+[data-theme="light"] .landscape-sky {
+  background: linear-gradient(180deg, 
+    #e8eaf6 0%, 
+    #f3e5f5 40%, 
+    #fce4ec 75%, 
+    #ede7f6 100%
+  );
+}
+
+/* Atmospheric Sun/Moon Dusk Glow */
+.sky-glow {
+  position: absolute;
+  top: 20%;
+  right: 15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 126, 149, 0.28) 0%, rgba(255, 152, 0, 0.15) 40%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 2;
+  animation: atmospheric-breathe 8s ease-in-out infinite alternate;
+}
+
+@keyframes atmospheric-breathe {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Interactive Canvas for Sakura Petals & AI Neural Graph */
+#particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+/* Illustrated Vector Landscape Scene */
+.landscape-art {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.landscape-art svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom center;
+}
+
+/* Warm Lantern Flickering Effects */
+.lantern-glow-point {
+  animation: lantern-flicker 3.5s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes lantern-flicker {
+  0%, 100% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 12px #ff9800) drop-shadow(0 0 25px rgba(255, 179, 71, 0.6));
+  }
+  30% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 8px #ff9800) drop-shadow(0 0 16px rgba(255, 179, 71, 0.4));
+  }
+  60% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px #ffb347) drop-shadow(0 0 32px rgba(255, 152, 0, 0.8));
+  }
+}
+
+/* Water Ripple Animation */
+.water-reflection {
+  opacity: 0.7;
+  animation: water-drift 6s ease-in-out infinite alternate;
+}
+
+@keyframes water-drift {
+  0% { transform: translateY(0) scaleX(1); opacity: 0.6; }
+  100% { transform: translateY(-2px) scaleX(1.02); opacity: 0.85; }
+}
+
+/* Hero Content Layer */
+.hero-content-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 968px) {
+  .hero-content-wrapper {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 60px;
+  }
+}
+
+/* Hero Left Column Typography */
+.hero-identity {
+  position: relative;
+}
+
+.hero-watermark-kanji {
+  position: absolute;
+  top: -40px;
+  left: -20px;
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 15vw, 11rem);
+  font-weight: 900;
+  color: rgba(255, 126, 149, 0.08);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  letter-spacing: 0.1em;
+}
+
+[data-theme="light"] .hero-watermark-kanji {
+  color: rgba(60, 30, 72, 0.07);
+}
+
+.hero-tag-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 968px) {
+  .hero-tag-wrap {
+    justify-content: center;
+  }
+}
+
+.hero-title {
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title .gradient-name {
+  background: linear-gradient(135deg, #ffffff 0%, #ffe3e8 40%, #ff7e95 80%, #8e2de2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.hero-subhead {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 600;
+  color: var(--ai-cyan);
+  font-family: var(--font-mono);
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 968px) {
+  .hero-subhead {
+    justify-content: center;
+  }
+}
+
+.hero-bio {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 580px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 968px) {
+  .hero-bio {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 968px) {
+  .hero-cta-group {
+    justify-content: center;
+  }
+}
+
+.hero-social-strip {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--glass-border);
+}
+
+@media (max-width: 968px) {
+  .hero-social-strip {
+    justify-content: center;
+  }
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-glass);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.social-pill:hover {
+  border-color: var(--twilight-rose);
+  background: var(--surface-glass-hover);
+  transform: translateY(-2px);
+  color: var(--twilight-rose);
+}
+
+/* Hero Right Side: Floating Interactive Terminal/Card */
+.hero-preview-card {
+  position: relative;
+  background: var(--surface-glass);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-smooth);
+}
+
+.hero-preview-card:hover {
+  border-color: var(--glass-border-hover);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
+
+.terminal-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--twilight-rose);
+  background: rgba(255, 126, 149, 0.1);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.terminal-body {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.terminal-line {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-prompt {
+  color: var(--ai-cyan);
+}
+
+.terminal-val {
+  color: #a5b4fc;
+}
+
+.terminal-val.accent {
+  color: var(--twilight-rose);
+  font-weight: 600;
+}
+
+.terminal-val.green {
+  color: var(--ai-emerald);
+}

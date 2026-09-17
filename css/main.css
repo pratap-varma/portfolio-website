@@ -1,0 +1,342 @@
+/* ==========================================================================
+   PRATAP VARMA - PORTFOLIO DESIGN SYSTEM & BASE STYLES
+   Aesthetic: Neo-Zen Twilight Landscape & Game UI (Kamui reference) + Modern AI Product
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Twilight Sky & Ambiance Palette */
+  --twilight-void: #07080e;
+  --twilight-deep: #0e0f1d;
+  --twilight-violet: #1a1636;
+  --twilight-mauve: #3c1e48;
+  --twilight-rose: #ff7e95;
+  --twilight-rose-glow: rgba(255, 126, 149, 0.35);
+  
+  /* Lantern Warmth */
+  --lantern-gold: #ffc247;
+  --lantern-amber: #ff9800;
+  --lantern-glow: rgba(255, 179, 71, 0.45);
+  
+  /* Cyber & AI Engineering Accents */
+  --ai-cyan: #00f2fe;
+  --ai-cyan-glow: rgba(0, 242, 254, 0.35);
+  --ai-violet: #8e2de2;
+  --ai-emerald: #10b981;
+  --ai-emerald-glow: rgba(16, 185, 129, 0.3);
+
+  /* Glassmorphic Surfaces (Dark Theme) */
+  --surface-glass: rgba(15, 17, 30, 0.72);
+  --surface-glass-card: rgba(20, 22, 38, 0.65);
+  --surface-glass-hover: rgba(30, 33, 56, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(255, 126, 149, 0.4);
+  --glass-border-cyan: rgba(0, 242, 254, 0.4);
+  --glass-blur: blur(20px);
+  --glass-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 126, 149, 0.08);
+
+  /* Typography Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-gradient: linear-gradient(135deg, #ffffff 0%, #fed7e2 50%, #f472b6 100%);
+  --text-cyan-grad: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  --text-gold-grad: linear-gradient(135deg, #ffe082 0%, #ffb300 100%);
+
+  /* Fonts */
+  --font-display: 'Outfit', -apple-system, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Layout */
+  --nav-height: 72px;
+  --max-width: 1240px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* Light Theme Variables */
+[data-theme="light"] {
+  --twilight-void: #f5f6fa;
+  --twilight-deep: #ebedf5;
+  --twilight-violet: #ded9ed;
+  --twilight-mauve: #f3e5f5;
+  --surface-glass: rgba(255, 255, 255, 0.8);
+  --surface-glass-card: rgba(255, 255, 255, 0.7);
+  --surface-glass-hover: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-border-hover: rgba(236, 72, 153, 0.4);
+  --glass-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.08), 0 0 20px rgba(255, 126, 149, 0.1);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-gradient: linear-gradient(135deg, #0f172a 0%, #334155 50%, #475569 100%);
+}
+
+/* ==========================================================================
+   Base Reset
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  font-size: 16px;
+  background-color: var(--twilight-void);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--twilight-void);
+  background-image: 
+    radial-gradient(ellipse at top right, rgba(60, 30, 72, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at center left, rgba(26, 22, 54, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(0, 242, 254, 0.08) 0%, transparent 50%);
+  background-attachment: fixed;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--twilight-void);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 126, 149, 0.3);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--twilight-rose);
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 126, 149, 0.35);
+  color: #ffffff;
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Section Header Structure with Japanese Watermark */
+.section-header {
+  position: relative;
+  margin-bottom: 56px;
+  text-align: center;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 126, 149, 0.1);
+  border: 1px solid rgba(255, 126, 149, 0.25);
+  color: var(--twilight-rose);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.section-tag .dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--twilight-rose);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--twilight-rose);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 12px;
+}
+
+.section-title .highlight {
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
+
+/* Watermark Katakana / Kanji Text (Kamui style) */
+.watermark-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 12vw, 9rem);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: rgba(255, 126, 149, 0.04);
+  z-index: 1;
+  pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+}
+
+[data-theme="light"] .watermark-text {
+  color: rgba(60, 30, 72, 0.05);
+}
+
+/* Pill Badges & Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 26px;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff7e95 0%, #ff5277 50%, #8e2de2 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(255, 126, 149, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 126, 149, 0.6);
+}
+
+.btn-secondary {
+  background: var(--surface-glass);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-glass-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+}
+
+.btn-cyan {
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  color: #06101e;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(0, 242, 254, 0.35);
+}
+
+.btn-cyan:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 242, 254, 0.55);
+}
+
+/* Pulsing Online Status Indicator */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  color: var(--ai-emerald);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.status-badge .beacon {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  background-color: var(--ai-emerald);
+  border-radius: 50%;
+}
+
+.status-badge .beacon::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--ai-emerald);
+  animation: beacon-ripple 1.8s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes beacon-ripple {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}

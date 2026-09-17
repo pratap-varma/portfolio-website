@@ -1,0 +1,633 @@
+/* ==========================================================================
+   BENTO GRIDS & SECTION COMPONENT LAYOUTS
+   About, Skills Arsenal, Projects, Timeline, Certifications, and Beyond Code
+   ========================================================================== */
+
+/* Section Spacing */
+section {
+  padding: 100px 0;
+  position: relative;
+  z-index: 10;
+}
+
+/* Base Bento Card */
+.bento-card {
+  background: var(--surface-glass-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  box-shadow: var(--glass-shadow);
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 126, 149, 0.15);
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 126, 149, 0.5), transparent);
+  opacity: 0;
+  transition: var(--transition-fast);
+}
+
+.bento-card:hover::before {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   1. About Me Bento Grid
+   ========================================================================== */
+.about-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.about-card-story {
+  grid-column: span 8;
+}
+
+.about-card-focus {
+  grid-column: span 4;
+}
+
+.about-card-stats {
+  grid-column: span 7;
+}
+
+.about-card-location {
+  grid-column: span 5;
+}
+
+@media (max-width: 968px) {
+  .about-card-story, .about-card-focus, .about-card-stats, .about-card-location {
+    grid-column: span 12;
+  }
+}
+
+.card-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 126, 149, 0.12);
+  border: 1px solid rgba(255, 126, 149, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--twilight-rose);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.bento-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+
+.bento-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Stats Counter Grid inside Bento */
+.stats-counter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 10px;
+}
+
+@media (max-width: 640px) {
+  .stats-counter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat-item {
+  text-align: center;
+  padding: 16px 8px;
+  background: rgba(14, 16, 28, 0.4);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--twilight-rose);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   2. Technical Arsenal Section
+   ========================================================================== */
+.arsenal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 968px) {
+  .arsenal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .arsenal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.arsenal-category-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  transition: var(--transition-fast);
+}
+
+.tech-tag:hover {
+  background: rgba(255, 126, 149, 0.15);
+  border-color: rgba(255, 126, 149, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   3. Interactive AI Prompt Sandbox
+   ========================================================================== */
+.playground-box {
+  background: var(--surface-glass);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--glass-shadow);
+  margin-top: 30px;
+}
+
+.playground-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.prompt-pill-btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 242, 254, 0.08);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  color: var(--ai-cyan);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.prompt-pill-btn:hover, .prompt-pill-btn.active {
+  background: var(--ai-cyan);
+  color: #06101e;
+  box-shadow: 0 0 15px var(--ai-cyan-glow);
+}
+
+.playground-terminal {
+  background: rgba(8, 10, 18, 0.92);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  min-height: 180px;
+  max-height: 320px;
+  overflow-y: auto;
+  line-height: 1.7;
+}
+
+.terminal-stream-text {
+  color: #e2e8f0;
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: var(--ai-cyan);
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ==========================================================================
+   4. Featured Projects Showcase
+   ========================================================================== */
+.projects-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.filter-pill {
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-glass);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.filter-pill:hover, .filter-pill.active {
+  background: rgba(255, 126, 149, 0.2);
+  border-color: var(--twilight-rose);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 126, 149, 0.25);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 860px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.project-num {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--twilight-rose);
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: var(--ai-emerald);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+.project-name {
+  font-size: 1.65rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-tagline {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ai-cyan);
+  margin-bottom: 14px;
+}
+
+.project-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.project-tech-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.project-footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.details-prompt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--twilight-rose);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition-fast);
+}
+
+.project-card:hover .details-prompt-btn {
+  transform: translateX(4px);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   5. Experience & Hackathons Timeline
+   ========================================================================== */
+.experience-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.timeline-meta {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--twilight-rose);
+}
+
+.timeline-role {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.timeline-org {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ai-cyan);
+  margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   6. Certifications Vault
+   ========================================================================== */
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 968px) {
+  .certifications-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cert-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cert-issuer {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--twilight-rose);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.cert-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ai-emerald);
+}
+
+/* ==========================================================================
+   7. 4-Stage Engineering Approach Pipeline
+   ========================================================================== */
+.approach-pipeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  position: relative;
+}
+
+@media (max-width: 968px) {
+  .approach-pipeline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .approach-pipeline {
+    grid-template-columns: 1fr;
+  }
+}
+
+.approach-step {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.step-num-badge {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--twilight-rose), var(--ai-violet));
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px rgba(255, 126, 149, 0.35);
+}
+
+/* ==========================================================================
+   8. Beyond Code (Gaming, Automotive, Cinema, Visual Aesthetics)
+   ========================================================================== */
+.beyond-code-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .beyond-code-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.beyond-card {
+  padding: 28px;
+}
+
+.beyond-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.beyond-emoji {
+  font-size: 2rem;
+}
+
+.beyond-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* ==========================================================================
+   9. Currently Building & Contact Card
+   ========================================================================== */
+.now-building-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 900px) {
+  .now-building-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .now-building-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
+.now-item {
+  padding: 20px;
+  border-radius: var(--radius-md);
+  background: var(--surface-glass-card);
+  border: 1px solid var(--glass-border);
+}
+
+.contact-card-main {
+  background: var(--surface-glass);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  text-align: center;
+  box-shadow: var(--glass-shadow);
+}
+
+.contact-direct-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+/* Footer */
+.site-footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--glass-border);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}

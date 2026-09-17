@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pratap Varma — AI Engineer · Full-Stack Developer · Prompt Engineer</title>
+  <meta name="description" content="Personal AI Engineer portfolio of Pratap Varma. Specializing in Generative AI, Gemini API, Autonomous AI Agents, Machine Learning, and Full-Stack Engineering." />
+  <meta name="keywords" content="Pratap Varma, AI Engineer, Full-Stack Developer, Prompt Engineer, Machine Learning, Gemini API, MVGR College of Engineering, TrackX, J.A.R.V.I.S." />
+  <meta name="author" content="Pratap Varma" />
+  <meta property="og:title" content="Pratap Varma — AI Engineer Portfolio" />
+  <meta property="og:description" content="Turning complex ideas into intelligent AI systems, full-stack products, and interactive digital experiences." />
+  <meta property="og:type" content="website" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/landscape.css" />
+  <link rel="stylesheet" href="css/glass.css" />
+  <link rel="stylesheet" href="css/bento.css" />
+  <link rel="stylesheet" href="css/modal.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛩️</text></svg>">
+</head>
+<body>
+
+  <!-- Floating Frosted Glass Header Navigation -->
+  <header class="site-header" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Pratap Varma Home">
+        <div class="brand-emblem">PV</div>
+        <span>PRATAP<span style="color: var(--twilight-rose); font-weight: 400;">VARMA</span></span>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#arsenal" class="nav-link">Arsenal</a></li>
+          <li class="nav-item"><a href="#playground" class="nav-link">AI Sandbox</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="#experience" class="nav-link">Timeline</a></li>
+          <li class="nav-item"><a href="#certifications" class="nav-link">Certs</a></li>
+          <li class="nav-item"><a href="#beyond" class="nav-link">Beyond Code</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Controls -->
+      <div class="nav-actions">
+        <!-- Zen Sound Synth Toggle -->
+        <button id="sound-toggle" class="icon-btn" aria-label="Toggle Zen Sound Chimes" title="Mute/Unmute Ambient Zen Chimes">
+          <div class="audio-waves">
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+          </div>
+        </button>
+
+        <!-- Theme Mode Toggle -->
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme Mode" title="Toggle Light/Dark Theme">
+          <span>☀️</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-toggle-btn" class="icon-btn mobile-toggle" aria-label="Open Mobile Menu">
+          <span>☰</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <a href="#about" class="mobile-nav-link">About Me</a>
+    <a href="#arsenal" class="mobile-nav-link">Technical Arsenal</a>
+    <a href="#playground" class="mobile-nav-link">AI Agent Sandbox</a>
+    <a href="#projects" class="mobile-nav-link">Featured Projects</a>
+    <a href="#experience" class="mobile-nav-link">Experience & Hackathons</a>
+    <a href="#certifications" class="mobile-nav-link">Certifications</a>
+    <a href="#beyond" class="mobile-nav-link">Beyond Code</a>
+    <a href="#contact" class="mobile-nav-link">Contact & Connect</a>
+  </div>
+
+  <!-- Hero Section with Kamui-Inspired Twilight Landscape -->
+  <section class="hero-landscape-container" id="hero">
+    <!-- Sky & Sun Ambiance -->
+    <div class="landscape-sky"></div>
+    <div class="sky-glow"></div>
+
+    <!-- Interactive HTML5 Canvas (Sakura Petals + AI Nodes) -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Illustrated Vector Landscape Art (Mountains, Pagoda, Bridge, Lanterns) -->
+    <div class="landscape-art">
+      <svg viewBox="0 0 1920 1080" fill="none" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Gradients -->
+          <linearGradient id="mountFarGrad" x1="0" y1="300" x2="0" y2="750" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#4a2155" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#181335" stop-opacity="0.95"/>
+          </linearGradient>
+          <linearGradient id="mountNearGrad" x1="0" y1="450" x2="0" y2="850" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#2a1638"/>
+            <stop offset="100%" stop-color="#0e0d1f"/>
+          </linearGradient>
+          <linearGradient id="waterGrad" x1="0" y1="780" x2="0" y2="1080" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#16122c"/>
+            <stop offset="40%" stop-color="#1b1535"/>
+            <stop offset="100%" stop-color="#080711"/>
+          </linearGradient>
+          <radialGradient id="lanternGlowGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffe082" stop-opacity="1"/>
+            <stop offset="40%" stop-color="#ff9800" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#ff5722" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Distant Mountain Ridges -->
+        <path d="M0,580 L220,440 L450,560 L780,380 L1150,520 L1480,390 L1750,490 L1920,430 L1920,850 L0,850 Z" fill="url(#mountFarGrad)" opacity="0.7" />
+        
+        <!-- Mid-distance Mountain Silhouette -->
+        <path d="M0,660 L320,530 L640,650 L980,480 L1340,620 L1680,500 L1920,570 L1920,880 L0,880 Z" fill="url(#mountNearGrad)" opacity="0.95" />
+
+        <!-- Pagoda Hill (Left Foreground) -->
+        <path d="M-50,1080 L-50,680 Q180,620 380,720 Q540,800 620,1080 Z" fill="#090814" />
+        
+        <!-- Detailed Japanese Pagoda Temple on Left Hill -->
+        <g id="pagoda-temple" transform="translate(140, 480)">
+          <!-- Foundation Stilt Platform -->
+          <rect x="70" y="160" width="160" height="12" fill="#241b2b" rx="2"/>
+          <rect x="80" y="172" width="10" height="50" fill="#171220"/>
+          <rect x="130" y="172" width="10" height="60" fill="#171220"/>
+          <rect x="180" y="172" width="10" height="65" fill="#171220"/>
+          <rect x="210" y="172" width="10" height="55" fill="#171220"/>
+
+          <!-- Temple Chamber Walls -->
+          <rect x="85" y="90" width="130" height="70" fill="#1d1526" stroke="#ff7e95" stroke-opacity="0.3" stroke-width="1.5"/>
+          
+          <!-- Illuminated Temple Window (Warm Fireplace/Candle) -->
+          <rect x="125" y="105" width="50" height="40" fill="#ffe082" rx="4" filter="drop-shadow(0 0 15px #ff9800)"/>
+          <path d="M140,135 Q150,110 155,135 Q160,115 165,135 Z" fill="#ff5722" class="lantern-glow-point"/>
+
+          <!-- Lower Eave Roof with Graceful Japanese Curved Edges -->
+          <path d="M40,95 Q150,70 260,95 L245,80 Q150,60 55,80 Z" fill="#2d1b38" stroke="#ff7e95" stroke-opacity="0.4"/>
+
+          <!-- Upper Story Chamber -->
+          <rect x="105" y="45" width="90" height="40" fill="#171120"/>
+
+          <!-- Spire Top Roof -->
+          <path d="M60,50 Q150,20 240,50 L220,38 Q150,12 80,38 Z" fill="#381d45"/>
+          <!-- Pagoda Spire Finial -->
+          <polygon points="150,-10 146,30 154,30" fill="#e2a7b8" filter="drop-shadow(0 0 10px #ff7e95)"/>
+
+          <!-- Hanging Eave Lanterns (Flickering Warm Amber) -->
+          <g class="lantern-glow-point" transform="translate(45, 95)">
+            <line x1="0" y1="0" x2="0" y2="15" stroke="#ff9800" stroke-width="2"/>
+            <circle cx="0" cy="22" r="16" fill="url(#lanternGlowGrad)"/>
+            <rect x="-5" y="16" width="10" height="12" fill="#ffe082" rx="2"/>
+          </g>
+
+          <g class="lantern-glow-point" transform="translate(255, 95)">
+            <line x1="0" y1="0" x2="0" y2="15" stroke="#ff9800" stroke-width="2"/>
+            <circle cx="0" cy="22" r="16" fill="url(#lanternGlowGrad)"/>
+            <rect x="-5" y="16" width="10" height="12" fill="#ffe082" rx="2"/>
+          </g>
+        </g>
+
+        <!-- Arched Wooden Bridge Over Water -->
+        <g id="arched-bridge" transform="translate(560, 700)">
+          <!-- Bridge Under-Arch Shadow -->
+          <path d="M0,130 Q160,50 340,130 L340,140 Q160,65 0,140 Z" fill="#0d0918"/>
+          <!-- Bridge Pathway Deck -->
+          <path d="M-10,120 Q160,30 350,120 L350,132 Q160,42 -10,132 Z" fill="#3b203a" stroke="#ff7e95" stroke-opacity="0.35"/>
+          <!-- Bridge Railing Posts -->
+          <line x1="20" y1="108" x2="20" y2="80" stroke="#4a2849" stroke-width="3"/>
+          <line x1="90" y1="78" x2="90" y2="50" stroke="#4a2849" stroke-width="3"/>
+          <line x1="170" y1="62" x2="170" y2="34" stroke="#4a2849" stroke-width="3"/>
+          <line x1="250" y1="78" x2="250" y2="50" stroke="#4a2849" stroke-width="3"/>
+          <line x1="320" y1="108" x2="320" y2="80" stroke="#4a2849" stroke-width="3"/>
+          <!-- Top Railing -->
+          <path d="M0,95 Q160,15 340,95" fill="none" stroke="#ff7e95" stroke-width="3.5" stroke-opacity="0.8"/>
+        </g>
+
+        <!-- Right Bank Hill & Stone Lantern (Toro) -->
+        <path d="M1420,1080 Q1550,780 1950,720 L1950,1080 Z" fill="#090814" />
+        
+        <!-- Traditional Stone Lantern (Toro) on Right Bank -->
+        <g id="stone-lantern" transform="translate(1620, 680)">
+          <!-- Base & Pillar -->
+          <polygon points="40,140 10,180 70,180" fill="#1b172a"/>
+          <rect x="34" y="90" width="12" height="50" fill="#151221"/>
+          <rect x="20" y="80" width="40" height="10" fill="#221c33" rx="2"/>
+          
+          <!-- Light Chamber with Flame -->
+          <rect x="25" y="50" width="30" height="30" fill="#ffe082" rx="3" class="lantern-glow-point" filter="drop-shadow(0 0 20px #ff9800)"/>
+          
+          <!-- Roof & Finial -->
+          <polygon points="40,25 0,50 80,50" fill="#2d223f"/>
+          <circle cx="40" cy="22" r="5" fill="#ff7e95"/>
+        </g>
+
+        <!-- Water Body at Bottom with Soft Reflections -->
+        <rect x="0" y="820" width="1920" height="260" fill="url(#waterGrad)" class="water-reflection" />
+        <!-- Soft Water Glow Lines -->
+        <ellipse cx="280" cy="850" rx="140" ry="12" fill="#ff9800" opacity="0.15" filter="blur(10px)"/>
+        <ellipse cx="730" cy="850" rx="160" ry="10" fill="#ff7e95" opacity="0.18" filter="blur(12px)"/>
+        <ellipse cx="1660" cy="860" rx="90" ry="8" fill="#ff9800" opacity="0.2" filter="blur(8px)"/>
+      </svg>
+    </div>
+
+    <!-- Hero Foreground Content Layer -->
+    <div class="hero-content-wrapper">
+      <!-- Left Column: Typography & CTAs -->
+      <div class="hero-identity">
+        <!-- Japanese Katakana Watermark Background -->
+        <div class="hero-watermark-kanji" aria-hidden="true">人工知能</div>
+
+        <div class="hero-tag-wrap">
+          <div class="status-badge">
+            <span class="beacon"></span>
+            <span>Available for AI Systems & Innovation</span>
+          </div>
+          <span class="section-tag" style="margin-bottom:0;"><span class="dot"></span> MVGR B.Tech 2024 — Present</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="gradient-name">PRATAP VARMA</span>
+        </h1>
+
+        <div class="hero-subhead">
+          <span>⚡ AI Engineer</span>
+          <span>·</span>
+          <span>Full-Stack Developer</span>
+          <span>·</span>
+          <span>Prompt Engineer</span>
+        </div>
+
+        <p class="hero-bio">
+          I build intelligent AI systems, data-driven applications, full-stack products, and interactive digital experiences. Focused on turning ambitious ideas into working, production-minded software from complex concepts.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#projects" class="btn btn-primary">
+            <span>Explore My Work</span>
+            <span style="font-size:1.1rem;">✦</span>
+          </a>
+          <a href="#playground" class="btn btn-secondary">
+            <span>Interactive AI Sandbox</span>
+            <span style="color:var(--ai-cyan);">⚡</span>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <span>Get in Touch</span>
+          </a>
+        </div>
+
+        <div class="hero-social-strip">
+          <a href="https://github.com/pratap-varma" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="GitHub Profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/pratap-varma-899640334/" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="LinkedIn Profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+
+          <span class="social-pill" style="cursor:default;" title="Location">
+            <span>📍 Vizianagaram, AP, India</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Profile Console Card -->
+      <div class="hero-preview-card">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="terminal-dot dot-red"></span>
+            <span class="terminal-dot dot-yellow"></span>
+            <span class="terminal-dot dot-green"></span>
+          </div>
+          <span class="terminal-badge">pratap_agent_env.py</span>
+        </div>
+
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="terminal-prompt">$</span>
+            <span>whoami --verbose</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-val">&gt; Name:</span>
+            <span class="terminal-val accent">Pratap Varma</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-val">&gt; Focus:</span>
+            <span class="terminal-val">AI Engineering · Autonomous Agents · GenAI</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-val">&gt; College:</span>
+            <span class="terminal-val">MVGR College of Engineering (B.Tech)</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-val">&gt; Current_Builds:</span>
+            <span class="terminal-val green">['TrackX', 'J.A.R.V.I.S.', 'Paper Plot AI']</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-val">&gt; Core_Stack:</span>
+            <span class="terminal-val">[Python, Gemini API, React, TensorFlow, Flutter]</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-val">&gt; Approach:</span>
+            <span class="terminal-val accent">Learn ➔ Experiment ➔ Build ➔ Iterate</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-val">&gt; Status:</span>
+            <span class="terminal-val green">Ready for Hackathons & High-Impact Roles ●</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       ABOUT ME SECTION (BENTO GRID)
+       ========================================== -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="watermark-text" aria-hidden="true">自己紹介</div>
+        <div class="section-tag"><span class="dot"></span> Profile & Philosophy</div>
+        <h2 class="section-title">Turning Ideas into <span class="highlight">Working Products</span></h2>
+        <p class="section-subtitle">
+          A technology enthusiast passionate about building intelligent systems, robust backends, and responsive interactive products.
+        </p>
+      </div>
+
+      <div class="about-bento-grid">
+        <!-- Story & Approach -->
+        <div class="bento-card about-card-story">
+          <div class="card-icon-wrap">🚀</div>
+          <h3 class="bento-title">The Engineering Narrative</h3>
+          <p class="bento-text" style="margin-bottom: 16px;">
+            I'm Pratap Varma, a technology enthusiast focused on <strong>Artificial Intelligence, Machine Learning, Full-Stack Development, and emerging AI technologies</strong>.
+          </p>
+          <p class="bento-text" style="margin-bottom: 16px;">
+            I enjoy turning ideas into working products rather than stopping at concepts—from voice-controlled AI assistants and computer-vision systems to student productivity platforms, agricultural AI, research-paper analysis, and innovation platforms.
+          </p>
+          <p class="bento-text">
+            Whether I'm designing a clean interface, integrating a Gemini-powered AI pipeline, building a backend service, working with Firebase, or solving a difficult technical problem, I enjoy understanding how things work and turning them into something genuinely useful.
+          </p>
+        </div>
+
+        <!-- Current Focus -->
+        <div class="bento-card about-card-focus">
+          <div class="card-icon-wrap">⚡</div>
+          <h3 class="bento-title">Active Focus Areas</h3>
+          <div style="display:flex; flex-direction:column; gap:12px; margin-top:10px;">
+            <div class="tech-tag" style="width:100%; justify-content:flex-start;">✦ AI Engineering & LLM APIs</div>
+            <div class="tech-tag" style="width:100%; justify-content:flex-start;">✦ Autonomous AI Agents</div>
+            <div class="tech-tag" style="width:100%; justify-content:flex-start;">✦ Generative AI & Prompt Design</div>
+            <div class="tech-tag" style="width:100%; justify-content:flex-start;">✦ Machine Learning & Deep Vision</div>
+            <div class="tech-tag" style="width:100%; justify-content:flex-start;">✦ Full-Stack & Cloud Architecture</div>
+          </div>
+        </div>
+
+        <!-- Interactive Stats Ticker -->
+        <div class="bento-card about-card-stats">
+          <div class="card-icon-wrap">📊</div>
+          <h3 class="bento-title">Quantifiable Milestones</h3>
+          <div class="stats-counter-grid">
+            <div class="stat-item">
+              <div class="stat-number" data-target="8">8+</div>
+              <div class="stat-label">Featured Systems</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-target="14">14+</div>
+              <div class="stat-label">Certifications</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-target="4">4+</div>
+              <div class="stat-label">Programs & Internships</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-target="100">100%</div>
+              <div class="stat-label">Production Mindset</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Base & Education -->
+        <div class="bento-card about-card-location">
+          <div class="card-icon-wrap">🏛️</div>
+          <h3 class="bento-title">Academic & Location Base</h3>
+          <p class="bento-text" style="margin-bottom: 12px;">
+            <strong>MVGR College of Engineering</strong><br />
+            B.Tech in Computer Science & Artificial Intelligence (2024 — Present).
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--ai-cyan); margin-bottom: 14px;">
+            📍 Vizianagaram, Andhra Pradesh, India
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); background: rgba(0,0,0,0.25); padding: 8px 12px; border-radius: var(--radius-sm);">
+            Local Time: <span id="live-time-ticker">--:--:-- IST</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       TECHNICAL ARSENAL SECTION
+       ========================================== -->
+  <section id="arsenal">
+    <div class="container">
+      <div class="section-header">
+        <div class="watermark-text" aria-hidden="true">技術兵器</div>
+        <div class="section-tag"><span class="dot"></span> Weapons of Choice</div>
+        <h2 class="section-title">Technical <span class="highlight">Arsenal</span></h2>
+        <p class="section-subtitle">
+          A comprehensive toolkit spanning Artificial Intelligence, Machine Learning, Full-Stack Development, Cloud Platforms, and Core Computer Science.
+        </p>
+      </div>
+
+      <div class="arsenal-grid">
+        <!-- AI / ML / GenAI -->
+        <div class="bento-card">
+          <div class="arsenal-category-header">
+            <div class="card-icon-wrap" style="margin-bottom:0;">🧠</div>
+            <h3 class="bento-title" style="margin-bottom:0;">AI / ML & GenAI</h3>
+          </div>
+          <div class="tag-cloud">
+            <span class="tech-tag">Gemini API</span>
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">Deep Learning</span>
+            <span class="tech-tag">TensorFlow</span>
+            <span class="tech-tag">Computer Vision</span>
+            <span class="tech-tag">CNN</span>
+            <span class="tech-tag">Prompt Engineering</span>
+            <span class="tech-tag">AI Agents</span>
+            <span class="tech-tag">NLU</span>
+            <span class="tech-tag">Whisper Voice AI</span>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div class="bento-card">
+          <div class="arsenal-category-header">
+            <div class="card-icon-wrap" style="margin-bottom:0;">💻</div>
+            <h3 class="bento-title" style="margin-bottom:0;">Core Languages</h3>
+          </div>
+          <div class="tag-cloud">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">C</span>
+            <span class="tech-tag">C++</span>
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">JavaScript (ES6+)</span>
+            <span class="tech-tag">HTML5 / CSS3</span>
+            <span class="tech-tag">Dart</span>
+            <span class="tech-tag">SQL</span>
+          </div>
+        </div>
+
+        <!-- Frontend & Design -->
+        <div class="bento-card">
+          <div class="arsenal-category-header">
+            <div class="card-icon-wrap" style="margin-bottom:0;">🎨</div>
+            <h3 class="bento-title" style="margin-bottom:0;">Frontend & Design</h3>
+          </div>
+          <div class="tag-cloud">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">UI/UX Design</span>
+            <span class="tech-tag">Responsive Layouts</span>
+            <span class="tech-tag">Locofy</span>
+            <span class="tech-tag">Canvas API</span>
+            <span class="tech-tag">Glassmorphism</span>
+          </div>
+        </div>
+
+        <!-- Backend & APIs -->
+        <div class="bento-card">
+          <div class="arsenal-category-header">
+            <div class="card-icon-wrap" style="margin-bottom:0;">⚙️</div>
+            <h3 class="bento-title" style="margin-bottom:0;">Backend & Systems</h3>
+          </div>
+          <div class="tag-cloud">
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">RESTful APIs</span>
+            <span class="tech-tag">Microservices</span>
+            <span class="tech-tag">OCR Pipelines</span>
+          </div>
+        </div>
+
+        <!-- Data & Process Intelligence -->
+        <div class="bento-card">
+          <div class="arsenal-category-header">
+            <div class="card-icon-wrap" style="margin-bottom:0;">📈</div>
+            <h3 class="bento-title" style="margin-bottom:0;">Data & Process Mining</h3>
+          </div>
+          <div class="tag-cloud">
+            <span class="tech-tag">Data Analytics</span>
+            <span class="tech-tag">Process Mining</span>
+            <span class="tech-tag">Celonis EMS</span>
+            <span class="tech-tag">Document Intelligence</span>
+            <span class="tech-tag">Image Classification</span>
+            <span class="tech-tag">PlantVillage Datasets</span>
+          </div>
+        </div>
+
+        <!-- Cloud, Mobile & Tools -->
+        <div class="bento-card">
+          <div class="arsenal-category-header">
+            <div class="card-icon-wrap" style="margin-bottom:0;">☁️</div>
+            <h3 class="bento-title" style="margin-bottom:0;">Cloud, Mobile & Tools</h3>
+          </div>
+          <div class="tag-cloud">
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">Firestore</span>
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">Git & GitHub</span>
+            <span class="tech-tag">Android Studio</span>
+            <span class="tech-tag">VS Code</span>
+            <span class="tech-tag">Linux / PowerShell</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       INTERACTIVE AI AGENT SANDBOX (PLAYGROUND)
+       ========================================== -->
+  <section id="playground">
+    <div class="container">
+      <div class="section-header">
+        <div class="watermark-text" aria-hidden="true">実証実験</div>
+        <div class="section-tag"><span class="dot"></span> Live AI Execution</div>
+        <h2 class="section-title">Interactive <span class="highlight">AI Agent Sandbox</span></h2>
+        <p class="section-subtitle">
+          Test sample prompts and observe real-time agent reasoning, prompt decomposition, and decision workflows modeled on Pratap's projects.
+        </p>
+      </div>
+
+      <div class="playground-box">
+        <div class="playground-controls">
+          <button class="prompt-pill-btn active" data-scenario="attendance">
+            ✦ TrackX Attendance Forecaster
+          </button>
+          <button class="prompt-pill-btn" data-scenario="disease">
+            ✦ CropDiseaseAI Vision Classifier
+          </button>
+          <button class="prompt-pill-btn" data-scenario="paperplot">
+            ✦ Paper Plot Anomaly Detector
+          </button>
+          <button class="prompt-pill-btn" data-scenario="jarvis">
+            ✦ J.A.R.V.I.S. Voice Intent Router
+          </button>
+        </div>
+
+        <div class="playground-terminal" id="playground-output">
+          <!-- Dynamically filled by playground.js -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FEATURED PROJECTS SECTION (ALL 8 INCLUDED)
+       ========================================== -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div class="watermark-text" aria-hidden="true">実績作品</div>
+        <div class="section-tag"><span class="dot"></span> Portfolio Showcase</div>
+        <h2 class="section-title">Featured <span class="highlight">Systems & Artifacts</span></h2>
+        <p class="section-subtitle">
+          Real products, autonomous agents, and hackathon prototypes built from ground up. Click any card to inspect full problem statements, architecture, and live links.
+        </p>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="projects-filter-bar">
+        <button class="filter-pill active" data-filter="all">All Artifacts (8)</button>
+        <button class="filter-pill" data-filter="ai">AI & Autonomous Agents (4)</button>
+        <button class="filter-pill" data-filter="fullstack">Full-Stack & Platforms (3)</button>
+        <button class="filter-pill" data-filter="hackathon">Hackathons & Prototypes (1)</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projects-grid-container">
+        <!-- Rendered dynamically by app.js from PROJECTS_DATA -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       EXPERIENCE & HACKATHONS TIMELINE
+       ========================================== -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header">
+        <div class="watermark-text" aria-hidden="true">経歴道程</div>
+        <div class="section-tag"><span class="dot"></span> Experience & Hackathons</div>
+        <h2 class="section-title">Professional <span class="highlight">Journey & Hackathons</span></h2>
+        <p class="section-subtitle">
+          Industry simulations, AI data annotation, optimizations, and hackathon competitions.
+        </p>
+      </div>
+
+      <div class="experience-timeline">
+        <!-- Outlier AI -->
+        <div class="bento-card timeline-item">
+          <div class="timeline-meta">
+            <div style="font-weight:700; color:var(--text-primary);">OUTLIER AI</div>
+            <div>AI / Data Evaluation</div>
+          </div>
+          <div>
+            <h3 class="timeline-role">AI Data Annotation Specialist</h3>
+            <div class="timeline-org">Outlier AI</div>
+            <p class="bento-text">
+              Hands-on experience involving advanced AI and data annotation workflows, structured evaluation of LLM outputs, model critique, and reinforcement learning through human feedback (RLHF).
+            </p>
+          </div>
+        </div>
+
+        <!-- Emertxe -->
+        <div class="bento-card timeline-item">
+          <div class="timeline-meta">
+            <div style="font-weight:700; color:var(--text-primary);">EMERTXE TECH</div>
+            <div>Optimization Intern</div>
+          </div>
+          <div>
+            <h3 class="timeline-role">Smart EV Charging Station Optimization Intern</h3>
+            <div class="timeline-org">Emertxe Information Technologies</div>
+            <p class="bento-text">
+              Worked around the problem space of optimizing electric vehicle (EV) charging-station operations, power distribution constraints, and related technology workflows.
+            </p>
+          </div>
+        </div>
+
+        <!-- Deloitte x Forage -->
+        <div class="bento-card timeline-item">
+          <div class="timeline-meta">
+            <div style="font-weight:700; color:var(--text-primary);">DELOITTE × FORAGE</div>
+            <div>Virtual Simulation</div>
+          </div>
+          <div>
+            <h3 class="timeline-role">Data Analytics Simulation Intern</h3>
+            <div class="timeline-org">Deloitte Virtual Experience</div>
+            <p class="bento-text">
+              Hands-on exposure to corporate data analytics workflows, data cleansing, business-oriented analytical problem solving, and strategic insights communication.
+            </p>
+          </div>
+        </div>
+
+        <!-- EduSkills -->
+        <div class="bento-card timeline-item">
+          <div class="timeline-meta">
+            <div style="font-weight:700; color:var(--text-primary);">EDUSKILLS</div>
+            <div>Process Intelligence</div>
+          </div>
+          <div>
+            <h3 class="timeline-role">AI/ML & Process Intelligence Program Scholar</h3>
+            <div class="timeline-org">EduSkills Foundation</div>
+            <p class="bento-text">
+              Participated in intensive AI/ML and process-intelligence focused program experiences, discovering business friction points and enterprise automation paths.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hackathons & Events Grid -->
+        <div class="bento-card" style="grid-column: span 12; padding:32px;">
+          <h3 class="bento-title" style="margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+            <span>🏆</span> Hackathons & Developer Communities
+          </h3>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:20px;">
+            <div style="background:rgba(255,255,255,0.03); padding:18px; border-radius:var(--radius-md); border:1px solid var(--glass-border);">
+              <div style="font-weight:700; color:var(--twilight-rose); font-size:1.05rem; margin-bottom:4px;">Hack with Vizag — NSRIT</div>
+              <p class="bento-text" style="font-size:0.9rem;">Built <strong>Paper Plot AI</strong>, an AI-powered research paper integrity and anomaly detection platform.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.03); padding:18px; border-radius:var(--radius-md); border:1px solid var(--glass-border);">
+              <div style="font-weight:700; color:var(--twilight-rose); font-size:1.05rem; margin-bottom:4px;">MVGR SIH Internal Hackathon</div>
+              <p class="bento-text" style="font-size:0.9rem;">Smart India Hackathon internal ideation & prototype development around civic problem statements.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.03); padding:18px; border-radius:var(--radius-md); border:1px solid var(--glass-border);">
+              <div style="font-weight:700; color:var(--twilight-rose); font-size:1.05rem; margin-bottom:4px;">GDG on Campus</div>
+              <p class="bento-text" style="font-size:0.9rem;">Active developer and technology community engagement, study jams, and AI hack sessions.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.03); padding:18px; border-radius:var(--radius-md); border:1px solid var(--glass-border);">
+              <div style="font-weight:700; color:var(--twilight-rose); font-size:1.05rem; margin-bottom:4px;">Techsprint 2025</div>
+              <p class="bento-text" style="font-size:0.9rem;">Project sprint participation focused on engineering rapid, practical prototypes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CERTIFICATIONS VAULT (FILTERABLE)
+       ========================================== -->
+  <section id="certifications">
+    <div class="container">
+      <div class="section-header">
+        <div class="watermark-text" aria-hidden="true">資格認証</div>
+        <div class="section-tag"><span class="dot"></span> Verified Credentials</div>
+        <h2 class="section-title">Certifications <span class="highlight">Vault</span></h2>
+        <p class="section-subtitle">
+          Accredited credentials across AWS Cloud AI, Celonis Process Intelligence, Cisco Networking, and Advanced Deep Learning.
+        </p>
+      </div>
+
+      <div class="certifications-grid">
+        <!-- AWS Certs -->
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">AWS Academy</div>
+            <h3 class="cert-title">Machine Learning Foundations</h3>
+          </div>
+          <div class="cert-badge">✓ Verified AWS Credential</div>
+        </div>
+
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">Amazon Web Services</div>
+            <h3 class="cert-title">AWS AI Practitioner</h3>
+          </div>
+          <div class="cert-badge">✓ Verified AWS Credential</div>
+        </div>
+
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">Amazon Web Services</div>
+            <h3 class="cert-title">AWS Generative AI Solutions</h3>
+          </div>
+          <div class="cert-badge">✓ Verified AWS Credential</div>
+        </div>
+
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">Amazon Web Services</div>
+            <h3 class="cert-title">AWS Machine Learning Solutions</h3>
+          </div>
+          <div class="cert-badge">✓ Verified AWS Credential</div>
+        </div>
+
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">Amazon Web Services</div>
+            <h3 class="cert-title">Essentials of Prompt Engineering</h3>
+          </div>
+          <div class="cert-badge">✓ Verified AWS Credential</div>
+        </div>
+
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">Amazon Web Services</div>
+            <h3 class="cert-title">Optimizing Foundation Models</h3>
+          </div>
+          <div class="cert-badge">✓ Verified AWS Credential</div>
+        </div>
+
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">Amazon Web Services</div>
+            <h3 class="cert-title">Responsible AI Practices</h3>
+          </div>
+          <div class="cert-badge">✓ Verified AWS Credential</div>
+        </div>
+
+        <!-- Celonis Certs -->
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">Celonis</div>
+            <h3 class="cert-title">AI in Process Intelligence</h3>
+          </div>
+          <div class="cert-badge">✓ Verified Credential</div>
+        </div>
+
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">Celonis</div>
+            <h3 class="cert-title">Process Mining Verified Credential</h3>
+          </div>
+          <div class="cert-badge">✓ Verified Credential</div>
+        </div>
+
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">Celonis</div>
+            <h3 class="cert-title">8-Week Process Intelligence Internship</h3>
+          </div>
+          <div class="cert-badge">✓ Virtual Internship</div>
+        </div>
+
+        <!-- Cisco Certs -->
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">Cisco Networking Academy</div>
+            <h3 class="cert-title">Networking & CCNA Foundations</h3>
+          </div>
+          <div class="cert-badge">✓ Cisco Certified</div>
+        </div>
+
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">Cisco Networking Academy</div>
+            <h3 class="cert-title">Introduction to Cybersecurity</h3>
+          </div>
+          <div class="cert-badge">✓ Cisco Certified</div>
+        </div>
+
+        <!-- NPTEL / ServiceNow / Quantum -->
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">NPTEL / SWAYAM</div>
+            <h3 class="cert-title">Programming with GenAI & Deep Learning</h3>
+          </div>
+          <div class="cert-badge">✓ Ministry of Education, India</div>
+        </div>
+
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">ServiceNow</div>
+            <h3 class="cert-title">GenAI Career Accelerator</h3>
+          </div>
+          <div class="cert-badge">✓ Verified Industry Program</div>
+        </div>
+
+        <div class="bento-card cert-card">
+          <div>
+            <div class="cert-issuer">Qubitech</div>
+            <h3 class="cert-title">QC101 Quantum Algorithm Training</h3>
+          </div>
+          <div class="cert-badge">✓ Quantum Computing Credential</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       MY APPROACH PIPELINE
+       ========================================== -->
+  <section id="approach">
+    <div class="container">
+      <div class="section-header">
+        <div class="watermark-text" aria-hidden="true">開発手法</div>
+        <div class="section-tag"><span class="dot"></span> How I Work</div>
+        <h2 class="section-title">The Engineering <span class="highlight">Lifecycle</span></h2>
+        <p class="section-subtitle">
+          I like learning technologies by actually building with them: from first principles to scalable deployment.
+        </p>
+      </div>
+
+      <div class="approach-pipeline">
+        <div class="bento-card approach-step">
+          <div class="step-num-badge">01</div>
+          <h3 class="bento-title">Learn</h3>
+          <p class="bento-text">
+            Understand fundamental computer science, algorithms, and models before depending entirely on higher-level frameworks.
+          </p>
+        </div>
+
+        <div class="bento-card approach-step">
+          <div class="step-num-badge">02</div>
+          <h3 class="bento-title">Experiment</h3>
+          <p class="bento-text">
+            Test new AI models, Gemini APIs, agent architectures, and unorthodox development stacks with rapid proof-of-concepts.
+          </p>
+        </div>
+
+        <div class="bento-card approach-step">
+          <div class="step-num-badge">03</div>
+          <h3 class="bento-title">Build</h3>
+          <p class="bento-text">
+            Turn validated ideas into functional, clean, and reliable applications with production-minded UX and architecture.
+          </p>
+        </div>
+
+        <div class="bento-card approach-step">
+          <div class="step-num-badge">04</div>
+          <h3 class="bento-title">Iterate</h3>
+          <p class="bento-text">
+            Continuously improve products through systematic testing, edge-case debugging, user feedback, and speed optimization.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       BEYOND CODE (HOBBIES & INSPIRATIONS)
+       ========================================== -->
+  <section id="beyond">
+    <div class="container">
+      <div class="section-header">
+        <div class="watermark-text" aria-hidden="true">趣味情熱</div>
+        <div class="section-tag"><span class="dot"></span> Dimensions</div>
+        <h2 class="section-title">Beyond <span class="highlight">Code</span></h2>
+        <p class="section-subtitle">
+          Passions that fuel curiosity, spatial appreciation, visual storytelling, and high-performance design.
+        </p>
+      </div>
+
+      <div class="beyond-code-grid">
+        <!-- Gaming -->
+        <div class="bento-card beyond-card">
+          <div class="beyond-header">
+            <div class="beyond-emoji">🎮</div>
+            <div>
+              <h3 class="bento-title" style="margin-bottom:2px;">Gaming & Hardware</h3>
+              <span style="color:var(--twilight-rose); font-family:var(--font-mono); font-size:0.85rem;">System Optimization & Immersion</span>
+            </div>
+          </div>
+          <p class="bento-text">
+            I enjoy gaming and exploring computer hardware, tuning performance, GPU optimization, and discovering intricate digital worlds.
+          </p>
+          <div class="beyond-tags">
+            <span class="tech-tag">Forza Horizon 4</span>
+            <span class="tech-tag">Forza Horizon 5</span>
+            <span class="tech-tag">GTA V</span>
+            <span class="tech-tag">Minecraft</span>
+            <span class="tech-tag">PC Rig Tuning</span>
+          </div>
+        </div>
+
+        <!-- Automotive -->
+        <div class="bento-card beyond-card">
+          <div class="beyond-header">
+            <div class="beyond-emoji">🏎️</div>
+            <div>
+              <h3 class="bento-title" style="margin-bottom:2px;">High-Performance Automotive</h3>
+              <span style="color:var(--twilight-rose); font-family:var(--font-mono); font-size:0.85rem;">Precision Mechanical Engineering</span>
+            </div>
+          </div>
+          <p class="bento-text">
+            A deep appreciation for aerodynamic machine engineering, power-to-weight harmony, and superbike telemetry.
+          </p>
+          <div class="beyond-tags">
+            <span class="tech-tag">Ducati Multistrada V4 S</span>
+            <span class="tech-tag">Kawasaki ZX-10R</span>
+            <span class="tech-tag">BMW M Series</span>
+          </div>
+        </div>
+
+        <!-- Cinema -->
+        <div class="bento-card beyond-card">
+          <div class="beyond-header">
+            <div class="beyond-emoji">🎬</div>
+            <div>
+              <h3 class="bento-title" style="margin-bottom:2px;">Cinematic Storytelling</h3>
+              <span style="color:var(--twilight-rose); font-family:var(--font-mono); font-size:0.85rem;">Visual Composition & Direction</span>
+            </div>
+          </div>
+          <p class="bento-text">
+            Strong interest in South Indian and Hindi cinema: examining lighting, cinematography, pacing, color grading, and modern camera production technologies.
+          </p>
+          <div class="beyond-tags">
+            <span class="tech-tag">South Indian Cinema</span>
+            <span class="tech-tag">Hindi Cinema</span>
+            <span class="tech-tag">Cinematography</span>
+            <span class="tech-tag">Color Grading</span>
+          </div>
+        </div>
+
+        <!-- Digital Aesthetics -->
+        <div class="bento-card beyond-card">
+          <div class="beyond-header">
+            <div class="beyond-emoji">🎨</div>
+            <div>
+              <h3 class="bento-title" style="margin-bottom:2px;">Visual Aesthetics & UI/UX</h3>
+              <span style="color:var(--twilight-rose); font-family:var(--font-mono); font-size:0.85rem;">Digital Craftsmanship</span>
+            </div>
+          </div>
+          <p class="bento-text">
+            Experimenting with AI image generation, typography pairings, glassmorphism, micro-interactions, and neo-zen game interfaces.
+          </p>
+          <div class="beyond-tags">
+            <span class="tech-tag">AI Image Generation</span>
+            <span class="tech-tag">UI/UX Design</span>
+            <span class="tech-tag">Typography</span>
+            <span class="tech-tag">Digital Aesthetics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CURRENTLY BUILDING & CONTACT SECTION
+       ========================================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="watermark-text" aria-hidden="true">接続連絡</div>
+        <div class="section-tag"><span class="dot"></span> Now & Tomorrow</div>
+        <h2 class="section-title">Currently Building & <span class="highlight">Connect</span></h2>
+        <p class="section-subtitle">
+          Always open to collaborating on high-impact AI systems, innovative full-stack products, and ambitious hackathons.
+        </p>
+      </div>
+
+      <!-- Live Now Building Strip -->
+      <div class="now-building-strip">
+        <div class="now-item">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-weight:700; color:var(--text-primary);">TrackX</span>
+            <span class="project-status">● Active</span>
+          </div>
+          <p style="font-size:0.85rem; color:var(--text-secondary);">AI-powered academic intelligence & attendance forecasting system.</p>
+        </div>
+
+        <div class="now-item">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-weight:700; color:var(--text-primary);">J.A.R.V.I.S.</span>
+            <span class="project-status">● Active</span>
+          </div>
+          <p style="font-size:0.85rem; color:var(--text-secondary);">Personal voice AI assistant and autonomous agent architecture.</p>
+        </div>
+
+        <div class="now-item">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-weight:700; color:var(--text-primary);">Paper Plot AI</span>
+            <span class="project-status" style="color:#fbbf24; border-color:#fbbf24;">● Prototype</span>
+          </div>
+          <p style="font-size:0.85rem; color:var(--text-secondary);">AI-assisted research paper integrity and hallucination analysis.</p>
+        </div>
+
+        <div class="now-item">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-weight:700; color:var(--text-primary);">AI Experiments</span>
+            <span class="project-status" style="color:var(--ai-cyan); border-color:var(--ai-cyan);">● Exploring</span>
+          </div>
+          <p style="font-size:0.85rem; color:var(--text-secondary);">Exploring multimodal Gemini reasoning, vision pipelines, and web agents.</p>
+        </div>
+      </div>
+
+      <!-- Main Contact Card -->
+      <div class="contact-card-main">
+        <h3 style="font-size:clamp(1.8rem, 3.5vw, 2.5rem); font-weight:800; margin-bottom:12px;">
+          Let's build something <span class="highlight">extraordinary</span> together.
+        </h3>
+        <p style="max-width:640px; margin:0 auto 28px; font-size:1.05rem; color:var(--text-secondary);">
+          Whether you have an exciting AI problem, full-stack product challenge, hackathon idea, or just want to chat about AI agents, my inbox is always open.
+        </p>
+
+        <div class="contact-direct-actions">
+          <button id="copy-email-btn" class="btn btn-primary">
+            <span>Copy Contact Email</span>
+            <span>📋</span>
+          </button>
+
+          <a href="https://github.com/pratap-varma" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <span>GitHub Profile</span>
+            <span>↗</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/pratap-varma-899640334/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <span>LinkedIn Connection</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p style="margin-bottom: 8px;">
+        Designed & Engineered by <strong>Pratap Varma</strong> · Crafted with Twilight Anime & AI Aesthetic
+      </p>
+      <p style="font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted);">
+        Fast · Zero-Build · Fully Responsive · © 2026 Pratap Varma
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       INTERACTIVE PROJECT DETAIL MODAL
+       ========================================== -->
+  <div class="modal-backdrop" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <span class="modal-project-badge" id="modal-badge">PROJECT 01</span>
+          <h2 class="modal-title" id="modal-title">Project Name</h2>
+          <div class="modal-tagline" id="modal-tagline">Tagline</div>
+        </div>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Project Details">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div>
+          <div class="modal-section-title"><span>⚠️</span> Problem Statement</div>
+          <div class="modal-highlight-box" id="modal-problem">Problem description...</div>
+        </div>
+
+        <div>
+          <div class="modal-section-title"><span>💡</span> Engineering Solution & Architecture</div>
+          <p id="modal-solution" style="color:var(--text-secondary); line-height:1.7;">Solution description...</p>
+        </div>
+
+        <div>
+          <div class="modal-section-title"><span>⚡</span> Key Capabilities & Highlights</div>
+          <ul class="modal-features-list" id="modal-features">
+            <!-- Dynamically populated -->
+          </ul>
+        </div>
+
+        <div>
+          <div class="modal-section-title"><span>🛠️</span> Technologies Utilized</div>
+          <div class="tag-cloud" id="modal-tech">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="modal-links-group">
+          <a href="#" id="modal-github-link" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <span>View Source Code</span>
+            <span>↗</span>
+          </a>
+          <a href="#" id="modal-live-link" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display:none;">
+            <span>Live Demonstration</span>
+            <span>✦</span>
+          </a>
+        </div>
+        <button class="btn btn-secondary" id="modal-dismiss-btn">Dismiss</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="site-toast">
+    <span>✓</span>
+    <span id="toast-message">Notification</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/projects-data.js"></script>
+  <script src="js/canvas-petals.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/playground.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
