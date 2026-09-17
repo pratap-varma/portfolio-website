@@ -306,9 +306,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevChapterBtn = document.getElementById('prev-chapter-btn');
   const nextChapterBtn = document.getElementById('next-chapter-btn');
   const signatureSections = document.querySelectorAll('.signature-section');
-  const allNavLinks = document.querySelectorAll('.desktop-nav-link, .floating-bottom-dock .nav-link, .mobile-nav-link');
+  const allNavLinks = document.querySelectorAll('.floating-bottom-dock .dock-nav-item, .floating-bottom-dock .nav-link, .mobile-nav-link');
   const transitionStage = document.getElementById('page-transition-stage');
   const transitionFxContainer = document.getElementById('transition-fx-container');
+  const headerChapterNum = document.getElementById('header-chapter-num');
+  const headerChapterTitle = document.getElementById('header-chapter-title');
 
   let isPageTransitioning = false;
 
@@ -367,6 +369,16 @@ document.addEventListener('DOMContentLoaded', () => {
         link.classList.remove('active');
       }
     });
+
+    const chapterIdx = CHAPTERS_LIST.findIndex(c => c.id === activeId);
+    if (chapterIdx !== -1) {
+      if (headerChapterNum) {
+        headerChapterNum.textContent = `CH.${String(chapterIdx + 1).padStart(2, '0')}`;
+      }
+      if (headerChapterTitle) {
+        headerChapterTitle.textContent = CHAPTERS_LIST[chapterIdx].title;
+      }
+    }
   }
 
   function getCurrentSectionIndex() {
