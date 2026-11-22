@@ -1,32 +1,11 @@
 /**
- * Structured Data for All 8 Featured Projects
+ * Structured Data for Featured Projects
  */
 
 const PROJECTS_DATA = [
   {
-    id: "jarvis",
-    number: "01",
-    name: "J.A.R.V.I.S.",
-    tagline: "Personal AI Assistant & Autonomous Workflows",
-    category: "ai",
-    status: "Active Development",
-    shortDesc: "A personal AI assistant designed to provide a natural voice-driven interface for interacting with LLMs, orchestrating system tasks, and automating workflows.",
-    problem: "Interacting with computers through manual keyboard clicks and separate browser windows disrupts continuous developer flow. Existing consumer voice assistants lack deep AI model integration and local workflow control.",
-    solution: "Built an extensible agent architecture fusing Whisper for speech recognition, Gemini API for contextual intelligence, and native automation hooks to execute computer tasks with natural voice commands.",
-    features: [
-      "Natural voice interaction & low-latency Whisper speech recognition",
-      "Gemini-powered contextual reasoning and dynamic tool execution",
-      "System automation and OS workflow controls",
-      "Extensible modular agent architecture for custom skills",
-      "Continuous feedback and iterative self-improving prompt system"
-    ],
-    tech: ["Python", "Gemini API", "Whisper", "Voice AI", "Automation", "Agent Arch"],
-    github: "https://github.com/pratap-varma",
-    live: "#"
-  },
-  {
     id: "trackx",
-    number: "02",
+    number: "01",
     name: "TrackX",
     tagline: "Academic Intelligence & Attendance Forecasting",
     category: "fullstack",
@@ -49,7 +28,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "cropdisease",
-    number: "03",
+    number: "02",
     name: "CropDiseaseAI",
     tagline: "AI Crop Disease Detection & Agricultural Guidance",
     category: "ai",
@@ -67,67 +46,5 @@ const PROJECTS_DATA = [
     tech: ["Python", "Flask", "TensorFlow", "CNN", "Gemini AI", "PlantVillage"],
     github: "https://github.com/pratap-varma/crop-disease-ai",
     live: "https://cropdisease-liard.vercel.app"
-  },
-  {
-    id: "paperplot",
-    number: "04",
-    name: "Paper Plot AI",
-    tagline: "Research Paper Integrity & Hallucination Analysis",
-    category: "hackathon",
-    status: "Hackathon Prototype",
-    shortDesc: "Explores AI-assisted analysis to identify authentic research patterns, fabricated claims, document inconsistencies, and AI-generated text in academic papers.",
-    problem: "The proliferation of synthetic papers and predatory citations makes manual review tedious and error-prone for academic conferences.",
-    solution: "Created an intelligent analysis layer for uploaded research papers utilizing NLP and document intelligence to highlight anomalies and suspicious content signals.",
-    features: [
-      "Document ingestion and multi-layer structural extraction",
-      "Detection of AI-generated prose signatures and consistency checks",
-      "Cross-checking research characteristics vs. known paper structures",
-      "Flagging anomalous citations and fabricated claims",
-      "Designed for the 'Hack with Vizag' NSRIT Hackathon"
-    ],
-    tech: ["AI", "NLP", "Document Intelligence", "Python", "Research Analysis"],
-    github: "https://github.com/pratap-varma",
-    live: "#"
-  },
-  {
-    id: "samadhansetu",
-    number: "05",
-    name: "Samadhan Setu",
-    tagline: "Civic & Industrial Innovation Challenge Platform",
-    category: "fullstack",
-    status: "Concept / Prototype",
-    shortDesc: "A digital governance platform uniting Citizens, Academic Institutions, Industries, and Government bodies to collaboratively solve real-world community challenges.",
-    problem: "Public sector challenges and civic issues remain siloed, preventing young researchers, student innovators, and industry R&D teams from co-developing solutions.",
-    solution: "Architected a collaborative problem-discovery hub where verified citizen grievances across healthcare, water, and sanitation become open innovation bounties.",
-    features: [
-      "Challenge submission across 10 critical public domains",
-      "Multi-stakeholder portal (Citizens ↔ Institutions ↔ Industry ↔ Govt)",
-      "Collaborative project discovery and solution proposals",
-      "Domain filtering: Healthcare, Agriculture, Water, Sanitation, Tech",
-      "Civic transparency and status tracking pipeline"
-    ],
-    tech: ["Full Stack", "AI", "Digital Governance", "React", "REST APIs"],
-    github: "https://github.com/pratap-varma",
-    live: "#"
-  },
-  {
-    id: "financeai",
-    number: "06",
-    name: "Personal Finance AI",
-    tagline: "Intelligent Financial Analytics & Automated Insights",
-    category: "ai",
-    status: "Exploring Prototype",
-    shortDesc: "An AI-oriented personal finance project exploring how intelligent systems parse transactions, predict cash flows, and surface automated financial insights.",
-    problem: "Traditional budgeting apps show static charts without contextual advice or automated understanding of spending behavior.",
-    solution: "Built a transaction intelligence pipeline using NLP and financial analytics to categorize expenses and generate proactive budget advisories.",
-    features: [
-      "Automated statement categorization and pattern detection",
-      "Predictive recurring expense forecasting",
-      "Contextual spending advisories generated via LLM prompts",
-      "Clean visual dashboards with dynamic breakdown metrics"
-    ],
-    tech: ["Python", "AI", "Data Analytics", "FastAPI", "Automation"],
-    github: "https://github.com/pratap-varma",
-    live: "#"
   }
 ];
